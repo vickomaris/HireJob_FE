@@ -1,0 +1,56 @@
+.loginpekerja{
+    background-color: #E5E5E5;
+}
+.leftside{
+    background-image: linear-gradient(#5d50a1ab, #5d50a198),url(../public/pic1.png);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 43vw;
+    display: flex;
+    padding: 55px;
+    /* justify-content: center;
+    align-items: center; */
+    background-color: #E5E5E5;
+}
+
+.textBanner{
+    color: #FFFFFF;
+    font-size: 34px;
+    font-weight: bold;
+    margin-top: 200px !important;
+    margin-left: -50px;
+}
+
+
+
+.rightside{
+    background-color: #E5E5E5;
+}
+
+.titleRight{
+    margin-top: 50px;
+}
+
+.labelInput{
+    color: #9EA0A5;
+    font-size: 12px;
+}
+
+.holderInput{
+    color: #9EA0A5;
+    font-size: 16px;
+}
+
+.btncostum{
+    background-color: #FBB017;
+    color: #FFFFFF;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+}
+
+.regis span{
+    color: #FBB017;
+}

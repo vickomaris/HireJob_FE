@@ -1,0 +1,87 @@
+.top{
+    background-color: #5E50A1 ;
+    height: 150px;
+}
+.title{
+    color: #FFFFFF;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.main{
+    background-color: #E5E5E5;
+}
+
+.cari{
+    height: 70px;
+}
+
+.spanCostum{
+    background-color: white;
+}
+
+.spanCostumsort{
+    background-color: white;
+    color: #9EA0A5;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.spanCostumbutton{
+    background-color: #5E50A1;
+    color: white;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.content{
+    background-color: white;
+    border-radius: 5px;
+}
+
+.textName{
+    font-size: 22px;
+    color: #1F2A36;
+    font-weight: bold;
+    margin: 0;
+}
+
+.textProfession{
+    color: #9EA0A5;
+    font-size: 14px;
+    margin: 0;
+}
+
+.textLocation{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+.textSkill{
+    background-color: #FBB01799;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+.toProfile{
+    height: 50px;
+    border: none;
+    color: white;
+    background-color: #5E50A1;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 720px) {
+    .textSkill{
+        margin-top: 10px;
+        
+    }
+
+}

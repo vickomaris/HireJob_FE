@@ -1,0 +1,159 @@
+
+.topPurple{
+    background-color: #5E50A1 ;
+    height: 400px;
+}
+
+.main{
+    background-color:#E5E5E5;
+    height: max-content;
+    padding-bottom: 150px;
+}
+
+.leftside{
+    background-color: white;
+    height: max-content;
+    padding-bottom: 100px !important;
+    border-radius: 15px;
+    margin-top: -300px;
+}
+
+.textName{
+    color: #1F2A36;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.textProfession{
+    color: #1F2A36;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.textLocation{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+.textStatus{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+.textDescription{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+.btnHire{
+    color: white;
+    background-color: #5E50A1;
+    font-weight: bold;
+    font-size: 16px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+}
+
+.titleSkill{
+    color: #1F2A36;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.textSkill{
+    background-color: #FBB01799;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+.btnEdit{
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    color: #9EA0A5;
+}
+
+.textContact{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+
+.rightside{
+    background-color: white;
+    height: max-content;
+    padding-bottom: 100px !important;
+    border-radius: 15px;
+    margin-top: -300px;
+}
+
+.portofolioCard{
+    width: 100%;
+}
+
+.gambar{
+    height: 150px !important ;
+    width: 100% !important;
+    border-radius: 5px;
+}
+
+.titlePortofolio{
+    text-align: center;
+    color: #1F2A36;
+    font-size: 14px;
+}
+
+.cardCostum{
+    border: none;
+}
+
+.gambarPK{
+    height: 150px !important ;
+    width: 100% !important;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.textProfessionPK{
+    color: #1F2A36;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.textCompanyPK{
+ color:#46505C;
+ font-size: 18px;
+ margin: 0;
+}
+
+.textDatePK{
+    color: #9EA0A5;
+    font-size: 16px;
+}
+
+.textMonthPK{
+    color: #9EA0A5;
+    font-size: 16px;
+}
+
+.textDescriptionPK{
+    color: #1F2A36;
+    font-size: 14px;
+}
+
+
+@media only screen and (max-width: 720px) {
+    .rightside{
+        margin-top: 50px;
+        margin-left: 0px !important;
+    }
+
+}
+

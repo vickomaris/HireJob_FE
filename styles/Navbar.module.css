@@ -1,0 +1,23 @@
+.picNav{
+    height:25px;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.btnRegister{
+    background-color: #5E50A1;
+    color: white;
+    border: none;
+    height: 44px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btnLogin{
+    background-color: transparent;
+    color: #5E50A1;
+    border-color: #5E50A1;
+    height: 44px;
+    font-weight: bold;
+    border-radius: 5px;
+}

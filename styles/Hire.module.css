@@ -1,0 +1,136 @@
+
+
+
+.main{
+    background-color:#E5E5E5;
+    height: max-content;
+    padding-bottom: 150px;
+}
+
+.leftside{
+    background-color: white;
+    height: max-content;
+    padding-bottom: 100px !important;
+    border-radius: 15px;
+}
+
+.textName{
+    color: #1F2A36;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.textProfession{
+    color: #1F2A36;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.textLocation{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+.textStatus{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+.textDescription{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+.btnHire{
+    color: white;
+    background-color: #5E50A1;
+    font-weight: bold;
+    font-size: 16px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+}
+
+.titleSkill{
+    color: #1F2A36;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.textSkill{
+    background-color: #FBB01799;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+.textContact{
+    color: #9EA0A5;
+    font-size: 14px;
+}
+
+
+.rightside{
+    /* background-color: white; */
+    border-radius: 15px;
+    height: max-content;
+    padding-bottom: 50px;
+
+}
+
+.rightsideDatadiri{
+    border-radius: 15px;
+    height: max-content;
+    padding-bottom: 50px;
+}
+
+.textTitle{
+    color: #1F2A36;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.textSubTitle{
+    color: #46505C;
+    font-size: 18px;
+}
+
+.labelInput{
+    color: #9EA0A5;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.holderInput{
+    color: #9EA0A5;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.rightsideSkill{
+    background-color: white;
+    border-radius: 15px;
+    height: max-content;
+    padding-bottom: 50px;
+}
+
+
+.cstmArea{
+    height: 200px !important;
+}
+
+.btnSimpan{
+    height: 50px;
+    background-color: #FBB017;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+
+
+

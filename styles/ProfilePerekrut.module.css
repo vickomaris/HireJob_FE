@@ -1,0 +1,44 @@
+.topPurple{
+    background-color: #5E50A1 ;
+    height: 300px;
+}
+
+.main{
+    background-color:#E5E5E5;
+    height: max-content;
+    padding-bottom: 150px;
+}
+
+.mainProfile{
+    margin-top: -80px;
+}
+
+.nameCompany{
+    font-weight: bold;
+    font-size: 22px;
+    color: #1F2A36 ;
+}
+
+.bidangCompany{
+    font-size: 14px;
+}
+
+.textLocation{
+    font-size: 14px;
+    color: #9EA0A5;
+}
+
+.textDeskripsi{
+    font-size: 14px;
+    color: #9EA0A5;
+}
+
+.btnEdit{
+    background-color: #5E50A1;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    width: 400px;
+    height: 50px;
+}
