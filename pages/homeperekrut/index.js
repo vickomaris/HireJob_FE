@@ -90,7 +90,7 @@ const Index = () => {
                 <input type="text" className="form-control" id={styles.cari2} placeholder="Search for any skill" aria-describedby="addon-wrapping" />
                 <span className={`input-group-text ${styles.spanCostum}`} id="addon-wrapping">
                   {/* <i className="fa fa-search"> </i> */}
-                  <Image src='/search.png' width={20} height={20} />
+                  <Image src='/search.png' width={20} height={20} alt="search" />
                 </span>
                 <span className={`input-group-text ${styles.spanCostum}`} id="addon-wrapping">
                   <div className="dropdown">
@@ -120,12 +120,12 @@ const Index = () => {
                 data.map((item, index) => (
                   <div key={index} className={`col-md-12 mb-1 ${styles.content}`}>
                     <div  className="d-flex flex-row p-3">
-                      <Image src='/luis.png' height={100} width={100} className="col-md-1" />
+                      <Image src='/luis.png' height={100} width={100} className="col-md-1" alt="avatar" />
                       <div className="col-md-5 d-flex flex-column ms-5">
                         <p className={styles.textName}>{item.username}</p>
                         <p className={styles.textProfession}>{item.jobdesk}</p>
                         <div className="d-flex flex-row">
-                          <Image src='/mappin.svg' height={25} width={10} />
+                          <Image src='/mappin.svg' height={25} width={10}  alt="pin"/>
                           <p className={`ms-2 ${styles.textLocation}`}>Lorem ipsum</p>
                         </div>
                         <div className="d-flex flex-row">

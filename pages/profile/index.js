@@ -48,14 +48,14 @@ const Index = () => {
           <div className="row">
             <div className={`col-md-4 p-5 ${styles.leftside}`}>
               <div className="d-flex flex-row justify-content-center">
-                <Image src='/luis.png' width={150} height={150} />
+                <Image src='/luis.png' width={150} height={150} alt="avatar" />
               </div>
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-3 justify-content-center">
                     <Link href={`/editprofile/${item.id_user}`}>
                       {/* {localStorage.setItem("data", JSON.stringify(response.data.token.data));} */}
-                      <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} /> Edit </button>
+                      <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} alt="pencil" /> Edit </button>
                     </Link>
                   </div>
                 ))
@@ -71,7 +71,7 @@ const Index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row">
-                    <Image src='/mappin.svg' height={25} width={10} />
+                    <Image src='/mappin.svg' height={25} width={10} alt="pin" />
                     <p className={`ms-2 ${styles.textLocation}`}>{item.city == null ? (<p>.....</p>) : (<p>{item.city}</p>)}</p>
                   </div>
                 ))
@@ -102,7 +102,7 @@ const Index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-5">
-                    <Image src='/iconMail.svg' height={30} width={30} />
+                    <Image src='/iconMail.svg' height={30} width={30} alt="mail" />
                     <p className={`ms-4 ${styles.textContact}`}>{item.email == null ? (<p>.....</p>) : (<p>{item.email}</p>)}</p>
                   </div>
                 ))
@@ -110,7 +110,7 @@ const Index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-3">
-                    <Image src='/iconIg.svg' height={30} width={30} />
+                    <Image src='/iconIg.svg' height={30} width={30} alt="ig" />
                     <p className={`ms-4 ${styles.textContact}`}>{item.ig == null ? (<p>.....</p>) : (<p>{item.ig}</p>)}</p>
                   </div>
                 ))
@@ -118,7 +118,7 @@ const Index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-3">
-                    <Image src='/iconGithub.svg' height={30} width={30} />
+                    <Image src='/iconGithub.svg' height={30} width={30} alt="github" />
                     <p className={`ms-4 ${styles.textContact}`}>{item.github == null ? (<p>.....</p>) : (<p>{item.github}</p>)}</p>
                   </div>
                 ))
@@ -126,7 +126,7 @@ const Index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-3">
-                    <Image src='/iconGitlab.svg' height={30} width={30} />
+                    <Image src='/iconGitlab.svg' height={30} width={30} alt="gitlab" />
                     <p className={`ms-4 ${styles.textContact}`}>{item.gitlab == null ? (<p>.....</p>) : (<p>{item.gitlab}</p>)}</p>
                   </div>
                 ))
