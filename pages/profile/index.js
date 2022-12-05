@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Profile.module.css'
 
-const index = () => {
+const Index = () => {
 
   const [data, setData] = useState([])
 
@@ -17,7 +17,7 @@ const index = () => {
   }, [])
 
   const getId = (id_user) => {
-    axios.get(`http://localhost:3001/user/${id_user}`)
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/${id_user}`)
       .then((response) => {
         console.log(response.data)
         setData(response.data)
@@ -48,14 +48,14 @@ const index = () => {
           <div className="row">
             <div className={`col-md-4 p-5 ${styles.leftside}`}>
               <div className="d-flex flex-row justify-content-center">
-                <Image src='/luis.png' width={150} height={150} />
+                <Image src='/luis.png' width={150} height={150} alt="avatar" />
               </div>
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-3 justify-content-center">
                     <Link href={`/editprofile/${item.id_user}`}>
                       {/* {localStorage.setItem("data", JSON.stringify(response.data.token.data));} */}
-                      <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} /> Edit </button>
+                      <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} alt="pencil" /> Edit </button>
                     </Link>
                   </div>
                 ))
@@ -71,7 +71,7 @@ const index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row">
-                    <Image src='/mappin.svg' height={25} width={10} />
+                    <Image src='/mappin.svg' height={25} width={10} alt="pin" />
                     <p className={`ms-2 ${styles.textLocation}`}>{item.city == null ? (<p>.....</p>) : (<p>{item.city}</p>)}</p>
                   </div>
                 ))
@@ -102,7 +102,7 @@ const index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-5">
-                    <Image src='/iconMail.svg' height={30} width={30} />
+                    <Image src='/iconMail.svg' height={30} width={30} alt="mail" />
                     <p className={`ms-4 ${styles.textContact}`}>{item.email == null ? (<p>.....</p>) : (<p>{item.email}</p>)}</p>
                   </div>
                 ))
@@ -110,7 +110,7 @@ const index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-3">
-                    <Image src='/iconIg.svg' height={30} width={30} />
+                    <Image src='/iconIg.svg' height={30} width={30} alt="ig" />
                     <p className={`ms-4 ${styles.textContact}`}>{item.ig == null ? (<p>.....</p>) : (<p>{item.ig}</p>)}</p>
                   </div>
                 ))
@@ -118,7 +118,7 @@ const index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-3">
-                    <Image src='/iconGithub.svg' height={30} width={30} />
+                    <Image src='/iconGithub.svg' height={30} width={30} alt="github" />
                     <p className={`ms-4 ${styles.textContact}`}>{item.github == null ? (<p>.....</p>) : (<p>{item.github}</p>)}</p>
                   </div>
                 ))
@@ -126,7 +126,7 @@ const index = () => {
               {
                 data.map((item, index) => (
                   <div key={index} className="d-flex flex-row mt-3">
-                    <Image src='/iconGitlab.svg' height={30} width={30} />
+                    <Image src='/iconGitlab.svg' height={30} width={30} alt="gitlab" />
                     <p className={`ms-4 ${styles.textContact}`}>{item.gitlab == null ? (<p>.....</p>) : (<p>{item.gitlab}</p>)}</p>
                   </div>
                 ))
@@ -143,7 +143,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/reminder.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/reminder.jpg' width={150} height={150} alt="reminder" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Remainder app
                         </p>
@@ -153,7 +153,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/sosmed.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/sosmed.jpg' width={150} height={150} alt="sosmed" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Social media app
                         </p>
@@ -163,7 +163,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/management.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/management.jpg' width={150} height={150} alt="management" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Project management web
                         </p>
@@ -173,7 +173,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/reminder2.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/reminder2.jpg' width={150} height={150} alt="reminder" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Remainder app
                         </p>
@@ -183,7 +183,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/sosmed2.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/sosmed2.jpg' width={150} height={150} alt="sosmed" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Social media app
                         </p>
@@ -193,7 +193,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/management2.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/management2.jpg' width={150} height={150} alt="management" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Project management web
                         </p>
@@ -205,7 +205,7 @@ const index = () => {
                       <div className={`card ${styles.cardCostum}`}>
                         <div className="row g-0">
                           <div className="col-md-3">
-                            <Image src='/tokped.jpg' width={150} height={150} alt="..." className={styles.gambarPK} />
+                            <Image src='/tokped.jpg' width={150} height={150} alt="tokped" className={styles.gambarPK} />
                           </div>
                           <div className="col-md-9">
                             <div className="card-body">
@@ -224,7 +224,7 @@ const index = () => {
                       <div className={`card ${styles.cardCostum}`}>
                         <div className="row g-0">
                           <div className="col-md-3">
-                            <Image src='/tokped.jpg' width={150} height={150} alt="..." className={styles.gambarPK} />
+                            <Image src='/tokped.jpg' width={150} height={150} alt="toped" className={styles.gambarPK} />
                           </div>
                           <div className="col-md-9">
                             <div className="card-body">
@@ -253,6 +253,6 @@ const index = () => {
   )
 }
 
-index.layout = 'L1'
+Index.layout = 'L1'
 
-export default index
+export default Index

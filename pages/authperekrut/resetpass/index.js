@@ -19,7 +19,7 @@ const index = () => {
                             {/* <img src={bannerleft}/> */}
                             {/* <img src='/pic1.png'/> */}
                             <div className="logo">
-                                <Image src='/logoputih.png' width={90} height={50} />
+                                <Image src='/logoputih.png' width={90} height={50} alt='logo' />
                             </div>
                             <div className={`mt-5 ${styles.textBanner}`}>
                                 Temukan developer berbakat & terbaik di berbagai bidang keahlian
@@ -28,7 +28,7 @@ const index = () => {
                         <div className={`col-md-6 mt-5 p-5 ${styles.rightside}`}>
                             <div className="d-flex flex-column">
                                 <h1 className={styles.titleRight}>Reset Password</h1>
-                                <p className='mt-3'>Enter your user account's verified email address and we will send you a password reset link.
+                                <p className='mt-3'>Enter your user accounts verified email address and we will send you a password reset link.
                                 </p>
                             </div>
                             <div className="d-flex flex-column mt-5">

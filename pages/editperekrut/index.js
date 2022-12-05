@@ -26,17 +26,17 @@ const index = () => {
                         <div className={`col-md-4  ${styles.leftside}`}>
                             <div className={`p-5  ${styles.cardProfile}`}>
                                 <div className="d-flex flex-row justify-content-center">
-                                    <Image src='/luis.png' width={150} height={150} />
+                                    <Image src='/luis.png' width={150} height={150} alt='luis' />
                                 </div>
                                 <div className="d-flex flex-row mt-3 justify-content-center">
-                                    <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} /> Edit </button>
+                                    <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} alt='pencil' /> Edit </button>
                                 </div>
                                 <div className="d-flex flex-column mt-5">
                                     <p className={styles.textName}>PT. Martabat Jaya Abadi</p>
                                     <p className={styles.textProfession}>Financial</p>
                                 </div>
                                 <div className="d-flex flex-row">
-                                    <Image src='/mappin.svg' height={25} width={10} />
+                                    <Image src='/mappin.svg' height={25} width={10} alt='map' />
                                     <p className={`ms-2 ${styles.textLocation}`}>Purwokerto, Jawa Tengah</p>
                                 </div>
                                 

@@ -37,7 +37,7 @@ const Index = () => {
             if (form.createNewPass !== form.password) {
                 alert("password dan new password tidak sama")
             } else {
-                axios.post("http://localhost:3001/registerper", body)
+                axios.post(`${process.env.NEXT_PUBLIC_API_URL}/registerper`, body)
                     .then((response) => {
                         // if(response.data.code !== 200){
                         //     alert('error:' + response.data.message)
@@ -71,7 +71,7 @@ const Index = () => {
                             {/* <img src={bannerleft}/> */}
                             {/* <img src='/pic1.png'/> */}
                             <div className="logo">
-                                <Image src='/logoputih.png' width={90} height={50} />
+                                <Image src='/logoputih.png' width={90} height={50} alt="logowhite" />
                             </div>
 
                             <div className={`mt-5 ${styles.textBanner}`}>

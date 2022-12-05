@@ -25,14 +25,14 @@ const index = () => {
                         <div className={`col-md-4  ${styles.leftside}`}>
                             <div className={`p-5  ${styles.cardProfile}`}>
                                 <div className="d-flex flex-row justify-content-center">
-                                    <Image src='/luis.png' width={150} height={150} />
+                                    <Image src='/luis.png' width={150} height={150} alt='luis' />
                                 </div>
                                 <div className="d-flex flex-column mt-5">
                                     <p className={styles.textName}>Louis Tomlinson</p>
                                     <p className={styles.textProfession}>Web Developer</p>
                                 </div>
                                 <div className="d-flex flex-row">
-                                    <Image src='/mappin.svg' height={25} width={10} />
+                                    <Image src='/mappin.svg' height={25} width={10} alt='map' />
                                     <p className={`ms-2 ${styles.textLocation}`}>Purwokerto, Jawa Tengah</p>
                                 </div>
                                 <div className="d-flex flex-column">

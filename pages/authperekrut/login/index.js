@@ -18,7 +18,7 @@ const Index = () => {
         e.preventDefault();
         // console.log(form)
         // //root dari backend
-            axios.post("http://localhost:3001/loginper", form)
+            axios.post(`${process.env.NEXT_PUBLIC_API_URL}/loginper`, form)
             .then((response) => {
                 console.log(response.data)
                 if (response.data.status !== 'success') {
@@ -48,7 +48,7 @@ const Index = () => {
                             {/* <img src={bannerleft}/> */}
                             {/* <img src='/pic1.png'/> */}
                             <div className="logo">
-                                <Image src='/logoputih.png' width={90} height={50} />
+                                <Image src='/logoputih.png' width={90} height={50} alt="logowhite" />
                             </div>
 
                             <div className={`mt-5 ${styles.textBanner}`}>

@@ -12,7 +12,7 @@ export async function getStaticProps(context) {
       const { id } = context.params
       const response = await axios({
           method: "GET",
-          url: `http://localhost:3001/perekrut/${id}`
+          url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`
       })
       return {
           props: {
@@ -37,7 +37,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const response = await axios({
       method: "GET",
-      url: `http://localhost:3001/perekrut/`
+      url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut`
   })
   const paths = response.data.data.rows.map((item) => {
       return { params: { id: item.id_perekrut.toString() } }

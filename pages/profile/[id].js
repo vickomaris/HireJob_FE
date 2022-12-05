@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
         const { id } = context.params
         const response = await axios({
             method: 'GET',
-            url: `http://localhost:3001/user/${id}`
+            url: `${process.env.NEXT_PUBLIC_API_URL}/user/${id}`
         })
         // console.log(response.data)
         return {
