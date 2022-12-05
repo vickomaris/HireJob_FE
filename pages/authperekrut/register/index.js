@@ -37,7 +37,7 @@ const Index = () => {
             if (form.createNewPass !== form.password) {
                 alert("password dan new password tidak sama")
             } else {
-                axios.post("http://localhost:3001/registerper", body)
+                axios.post(`${process.env.NEXT_PUBLIC_API_URL}/registerper`, body)
                     .then((response) => {
                         // if(response.data.code !== 200){
                         //     alert('error:' + response.data.message)

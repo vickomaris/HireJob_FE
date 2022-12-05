@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Profile.module.css'
 
-const index = () => {
+const Index = () => {
 
   const [data, setData] = useState([])
 
@@ -17,7 +17,7 @@ const index = () => {
   }, [])
 
   const getId = (id_user) => {
-    axios.get(`http://localhost:3001/user/${id_user}`)
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/${id_user}`)
       .then((response) => {
         console.log(response.data)
         setData(response.data)
@@ -143,7 +143,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/reminder.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/reminder.jpg' width={150} height={150} alt="reminder" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Remainder app
                         </p>
@@ -153,7 +153,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/sosmed.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/sosmed.jpg' width={150} height={150} alt="sosmed" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Social media app
                         </p>
@@ -163,7 +163,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/management.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/management.jpg' width={150} height={150} alt="management" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Project management web
                         </p>
@@ -173,7 +173,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/reminder2.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/reminder2.jpg' width={150} height={150} alt="reminder" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Remainder app
                         </p>
@@ -183,7 +183,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/sosmed2.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/sosmed2.jpg' width={150} height={150} alt="sosmed" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Social media app
                         </p>
@@ -193,7 +193,7 @@ const index = () => {
                   <div className="col-md-4 mt-4">
                     <div className="collapse" id="collapseExample">
                       <div className={styles.portofolioCard}>
-                        <Image src='/management2.jpg' width={150} height={150} alt="" className={styles.gambar} />
+                        <Image src='/management2.jpg' width={150} height={150} alt="management" className={styles.gambar} />
                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                           Project management web
                         </p>
@@ -205,7 +205,7 @@ const index = () => {
                       <div className={`card ${styles.cardCostum}`}>
                         <div className="row g-0">
                           <div className="col-md-3">
-                            <Image src='/tokped.jpg' width={150} height={150} alt="..." className={styles.gambarPK} />
+                            <Image src='/tokped.jpg' width={150} height={150} alt="tokped" className={styles.gambarPK} />
                           </div>
                           <div className="col-md-9">
                             <div className="card-body">
@@ -224,7 +224,7 @@ const index = () => {
                       <div className={`card ${styles.cardCostum}`}>
                         <div className="row g-0">
                           <div className="col-md-3">
-                            <Image src='/tokped.jpg' width={150} height={150} alt="..." className={styles.gambarPK} />
+                            <Image src='/tokped.jpg' width={150} height={150} alt="toped" className={styles.gambarPK} />
                           </div>
                           <div className="col-md-9">
                             <div className="card-body">
@@ -253,6 +253,6 @@ const index = () => {
   )
 }
 
-index.layout = 'L1'
+Index.layout = 'L1'
 
-export default index
+export default Index

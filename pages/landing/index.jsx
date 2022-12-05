@@ -13,7 +13,7 @@ const index = () => {
       </Head>
       <nav className="navbar navbar-expand-lg navbar-light ">
                 <div className="container">
-                    <Link className="navbar-brand" href="#"><Image src='/logoungu.png' height={50} width={100} /></Link>
+                    <Link className="navbar-brand" href="#"><Image src='/logoungu.png' height={50} width={100} alt="logo" /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -49,7 +49,7 @@ const index = () => {
             </div>
             <div className="col-md-6">
               <div className="d-flex flex-row mt-5 rightside">
-                <Image src='/grupPic1.png' width={500} height={500} className={styles.pic1}/>
+                <Image src='/grupPic1.png' width={500} height={500} className={styles.pic1} alt="right"/>
               </div>
             </div>
           </div>
@@ -60,26 +60,26 @@ const index = () => {
           <div className="row">
             <div className="col-md-6 leftsideTwo">
               <div className="d-flex flex-row">
-                <Image src='/grupPic2.png' width={500} height={500} className={styles.pic1} />
+                <Image src='/grupPic2.png' width={500} height={500} className={styles.pic1} alt="left" />
               </div>
             </div>
             <div className="col-md-6 rightsideTwo">
               <div className="d-flex flex-column">
                 <h1>Kenapa harus mencari tallent di peworld</h1>
                 <div className="d-flex flex-row mt-5">
-                  <Image src='/ungutick.svg' width={23} height={23}  />
+                  <Image src='/ungutick.svg' width={23} height={23} alt="tick"  />
                   <p className='ms-4'> Lorem ipsum dolor sit amet.</p>
                 </div>
                 <div className="d-flex flex-row mt-3">
-                  <Image src='/ungutick.svg' width={23} height={23} />
+                  <Image src='/ungutick.svg' width={23} height={23} alt="tick" />
                   <p className='ms-4'> Lorem ipsum dolor sit amet.</p>
                 </div>
                 <div className="d-flex flex-row mt-3">
-                  <Image src='/ungutick.svg' width={23} height={23} />
+                  <Image src='/ungutick.svg' width={23} height={23} alt="tick" />
                   <p className='ms-4'> Lorem ipsum dolor sit amet.</p>
                 </div>
                 <div className="d-flex flex-row mt-3">
-                  <Image src='/ungutick.svg' width={23} height={23} />
+                  <Image src='/ungutick.svg' width={23} height={23} alt="tick" />
                   <p className='ms-4'> Lorem ipsum dolor sit amet.</p>
                 </div>
               </div>
@@ -97,37 +97,37 @@ const index = () => {
                 <div className="d-flex flex-row">
                   <div className="col-md-6">
                     <div className="d-flex flex-row mt-5">
-                      <Image src='/orangetick.svg' width={23} height={23} />
+                      <Image src='/orangetick.svg' width={23} height={23} alt="tick" />
                       <p className='ms-4'> Java </p>
                     </div>
                     <div className="d-flex flex-row mt-3">
-                      <Image src='/orangetick.svg' width={23} height={23} />
+                      <Image src='/orangetick.svg' width={23} height={23} alt="tick" />
                       <p className='ms-4'> Kotlin </p>
                     </div>
                     <div className="d-flex flex-row mt-3">
-                      <Image src='/orangetick.svg' width={23} height={23} />
+                      <Image src='/orangetick.svg' width={23} height={23} alt="tick" />
                       <p className='ms-4'> PHP </p>
                     </div>
                     <div className="d-flex flex-row mt-3">
-                      <Image src='/orangetick.svg' width={23} height={23} />
+                      <Image src='/orangetick.svg' width={23} height={23} alt="tick" />
                       <p className='ms-4'> Javascirpt </p>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="d-flex flex-row mt-5">
-                      <Image src='/orangetick.svg' width={23} height={23} />
+                      <Image src='/orangetick.svg' width={23} height={23} alt="tick" />
                       <p className='ms-4'> Golang </p>
                     </div>
                     <div className="d-flex flex-row mt-3">
-                      <Image src='/orangetick.svg' width={23} height={23} />
+                      <Image src='/orangetick.svg' width={23} height={23} alt="tick" />
                       <p className='ms-4'> C++ </p>
                     </div>
                     <div className="d-flex flex-row mt-3">
-                      <Image src='/orangetick.svg' width={23} height={23} />
+                      <Image src='/orangetick.svg' width={23} height={23} alt="tick" />
                       <p className='ms-4'> Ruby </p>
                     </div>
                     <div className="d-flex flex-row mt-3">
-                      <Image src='/orangetick.svg' width={23} height={23} />
+                      <Image src='/orangetick.svg' width={23} height={23} alt="tick" />
                       <p className='ms-4'> 10+ Bahasa Lainnya </p>
                     </div>
                   </div>
@@ -136,7 +136,7 @@ const index = () => {
             </div>
             <div className="col-md-6 rightsideThree">
               <div className="d-flex flex-row">
-                <Image src='/grupPic3.png' width={500} height={500} className={styles.pic1} />
+                <Image src='/grupPic3.png' width={500} height={500} className={styles.pic1} alt="right2" />
               </div>
             </div>
           </div>
@@ -154,7 +154,7 @@ const index = () => {
           <div className="row row-cols-1 row-cols-md-3 g-4 text-center">
             <div className='col'>
               <div className="card h-100 px-5 py-4 align-items-center">
-                <Image src='/harry.png' width={120} height={120} className={styles.photoImage} />
+                <Image src='/harry.png' width={120} height={120} className={styles.photoImage} alt="harry" />
                   <div className="card-body">
                     <h5 className={`card-title ${styles.textName}`}>Harry Styles</h5>
                     <p className={styles.textProfession}> Web Developer </p>
@@ -164,7 +164,7 @@ const index = () => {
             </div>
             <div className="col">
             <div className="card h-100 px-5 py-4 align-items-center">
-                <Image src='/harry.png' width={120} height={120} className={styles.photoImage} />
+                <Image src='/harry.png' width={120} height={120} className={styles.photoImage} alt="2" />
                   <div className="card-body">
                     <h5 className={`card-title ${styles.textName}`}>Harry Styles</h5>
                     <p className={styles.textProfession}> Web Developer </p>
@@ -174,7 +174,7 @@ const index = () => {
             </div>
             <div className="col">
             <div className="card h-100 px-5 py-4 align-items-center">
-                <Image src='/harry.png' width={120} height={120} className={styles.photoImage} />
+                <Image src='/harry.png' width={120} height={120} className={styles.photoImage} alt="harry" />
                   <div className="card-body">
                     <h5 className={`card-title ${styles.textName}`}>Harry Styles</h5>
                     <p className={styles.textProfession}> Web Developer </p>

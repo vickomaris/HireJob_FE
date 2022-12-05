@@ -11,7 +11,7 @@ import styles from '../../styles/ProfilePerekrut.module.css'
 //       const { id_perekrut } = context.params
 //       const response = await axios({
 //           method: "GET",
-//           url: `http://localhost:3001/perekrut/${id_perekrut}`
+//           url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id_perekrut}`
 //       })
 //       return {
 //           props: {
@@ -44,7 +44,7 @@ const Index = () => {
   }, [])
 
   const getId = (id_perekrut) => {
-    axios.get(`http://localhost:3001/perekrut/${id_perekrut}`)
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id_perekrut}`)
       .then((response) => {
         console.log(response.data)
         setData(response.data)

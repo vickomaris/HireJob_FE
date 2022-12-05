@@ -6,7 +6,7 @@ import Image from 'next/image'
 import styles from '../../styles/EditProfile.module.css'
 import axios from 'axios'
 
-const updateProfile = () => {
+const UpdateProfile = () => {
     const router = useRouter()
     // const { id } = router.query
 
@@ -32,7 +32,7 @@ const updateProfile = () => {
     }, [])
 
     const getId = (id) => {
-        axios.get(`http://localhost:3001/user/${id}`)
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`)
             .then((response) => {
                 console.log(response.data)
                 setData(response.data)
@@ -60,7 +60,7 @@ const updateProfile = () => {
             statusjob: update.statusjob
         }
         axios
-            .put(`http://localhost:3001/user/${id}`, form)
+            .put(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`, form)
             .then((res) => {
                 console.log(res);
                 // setImage("");
@@ -108,7 +108,7 @@ const updateProfile = () => {
                         <div className={`col-md-4  ${styles.leftside}`}>
                             <div className={`p-5  ${styles.cardProfile}`}>
                                 <div className="d-flex flex-row justify-content-center">
-                                    <Image src='/luis.png' width={150} height={150} />
+                                    <Image src='/luis.png' width={150} height={150} alt='luis'/>
                                 </div>
                                 {
                                     data.map((item, index) => (
@@ -121,7 +121,7 @@ const updateProfile = () => {
                                 {
                                     data.map((item, index) => (
                                         <div key={index} className="d-flex flex-row">
-                                            <Image src='/mappin.svg' height={25} width={10} />
+                                            <Image src='/mappin.svg' height={25} width={10} alt='map' />
                                             <p className={`ms-2 ${styles.textLocation}`}>{item.city == null ? (<p>.....</p>) : (<p>{item.city}</p>)}</p>
                                         </div>
                                     ))
@@ -376,5 +376,5 @@ const updateProfile = () => {
     )
 }
 
-updateProfile.layout = 'L1'
-export default updateProfile
+UpdateProfile.layout = 'L1'
+export default UpdateProfile

@@ -18,7 +18,7 @@ const Index = () => {
         e.preventDefault();
         // console.log(form)
         // //root dari backend
-            axios.post("http://localhost:3001/login", form)
+            axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, form)
             .then((response) => {
                 console.log(response.data)
                 if (response.data.status !== 'success') {
@@ -34,7 +34,6 @@ const Index = () => {
             .catch((err) => {
                 console.log(err);
             })
-            
     }
 
     return (

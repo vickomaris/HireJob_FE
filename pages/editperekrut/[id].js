@@ -6,7 +6,7 @@ import Image from 'next/image'
 import styles from '../../styles/editPerekrut.module.css'
 import axios from 'axios'
 
-const updatePerekrut = () => {
+const UpdatePerekrut = () => {
     const router = useRouter()
     // const { id } = router.query
 
@@ -31,7 +31,7 @@ const updatePerekrut = () => {
     }, [])
 
     const getId = (id) => {
-        axios.get(`http://localhost:3001/perekrut/${id}`)
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`)
             .then((response) => {
                 console.log(response.data)
                 setData(response.data)
@@ -58,7 +58,7 @@ const updatePerekrut = () => {
             linkedin: update.linkedin
         }
         axios
-            .put(`http://localhost:3001/perekrut/${id}`, form)
+            .put(`${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`, form)
             .then((res) => {
                 console.log(res);
                 // setImage("");
@@ -105,7 +105,7 @@ const updatePerekrut = () => {
                         <div className={`col-md-4  ${styles.leftside}`}>
                             <div className={`p-5  ${styles.cardProfile}`}>
                                 <div className="d-flex flex-row justify-content-center">
-                                    <Image src='/luis.png' width={150} height={150} />
+                                    <Image src='/luis.png' width={150} height={150} alt='luis' />
                                 </div>
                                 {/* <div className="d-flex flex-row mt-3 justify-content-center">
                                     <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} /> Edit </button>
@@ -121,7 +121,7 @@ const updatePerekrut = () => {
                                 {
                                     data.map((item, index) => (
                                         <div key={index} className="d-flex flex-row">
-                                            <Image src='/mappin.svg' height={25} width={10} />
+                                            <Image src='/mappin.svg' height={25} width={10} alt='map' />
                                             <p className={`ms-2 ${styles.textLocation}`}>{item.kota == null ? (<p>.....</p>) : (<p>{item.kota}</p>)}</p>
                                         </div>
                                     ))
@@ -249,5 +249,5 @@ const updatePerekrut = () => {
     )
 }
 
-updatePerekrut.layout = 'L1'
-export default updatePerekrut
+UpdatePerekrut.layout = 'L1'
+export default UpdatePerekrut

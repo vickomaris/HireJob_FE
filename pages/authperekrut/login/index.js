@@ -18,7 +18,7 @@ const Index = () => {
         e.preventDefault();
         // console.log(form)
         // //root dari backend
-            axios.post("http://localhost:3001/loginper", form)
+            axios.post(`${process.env.NEXT_PUBLIC_API_URL}/loginper`, form)
             .then((response) => {
                 console.log(response.data)
                 if (response.data.status !== 'success') {
