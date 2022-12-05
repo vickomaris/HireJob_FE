@@ -37,7 +37,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const response = await axios({
       method: "GET",
-      url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut`
+      url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut/`
   })
   const paths = response.data.data.rows.map((item) => {
       return { params: { id: item.id_perekrut.toString() } }
@@ -63,7 +63,7 @@ const Index = (props) => {
   // }, [])
 
   // const getId = () => {
-  //   axios.get(`http://localhost:3001/perekrut/${id}`)
+  //   axios.get(`${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`)
   //     .then((response) => {
   //       console.log(response.data)
   //       setData(response.data)

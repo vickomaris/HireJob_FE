@@ -19,7 +19,7 @@ const index = () => {
                             {/* <img src={bannerleft}/> */}
                             {/* <img src='/pic1.png'/> */}
                             <div className="logo">
-                                <Image src='/logoputih.png' width={90} height={50} alt="logowhite" />
+                                <Image src='/logoputih.png' width={90} height={50} alt="logowhite"/>
                             </div>
                             <div className={`mt-5 ${styles.textBanner}`}>
                                 Temukan developer berbakat & terbaik di berbagai bidang keahlian

@@ -16,7 +16,7 @@ const index = () => {
                     <div className="row">
                         <div className={`col-md-4 p-5 mt-5 ${styles.leftside}`}>
                             <div className="d-flex flex-row justify-content-center">
-                                <Image src='/luis.png' width={150} height={150} alt="avatar" />
+                                <Image src='/luis.png' width={150} height={150} alt="avatar"/>
                             </div>
                             <div className="d-flex flex-column mt-5">
                                 <p className={styles.textName}>Louis Tomlinson</p>

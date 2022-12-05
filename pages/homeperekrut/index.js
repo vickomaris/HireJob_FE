@@ -125,7 +125,7 @@ const Index = () => {
                         <p className={styles.textName}>{item.username}</p>
                         <p className={styles.textProfession}>{item.jobdesk}</p>
                         <div className="d-flex flex-row">
-                          <Image src='/mappin.svg' height={25} width={10} alt="pin" />
+                          <Image src='/mappin.svg' height={25} width={10}  alt="pin"/>
                           <p className={`ms-2 ${styles.textLocation}`}>Lorem ipsum</p>
                         </div>
                         <div className="d-flex flex-row">
