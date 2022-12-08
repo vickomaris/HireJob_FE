@@ -48,7 +48,7 @@ export async function getStaticProps(context) {
     )
     
     const data = await resultList.json();
-    // console.log("iniprint",data)
+    console.log("iniprint",data)
     return {
         props: {
             data: data
@@ -83,13 +83,14 @@ export async function getStaticPaths() {
   // console.log(paths)
   return {
       //   paths: [{ params: { id: '97' } }, { params: { id: '100' } }],
+
       paths,
       fallback:"blocking", // can also be true or 'blocking'
   }
 }
 
 const Index = (props) => {
-  console.log(props.data)
+  // console.log(props.data)
   // const router = useRouter()
   // const { id } = router.query
   // const [data, setData] = useState([])
@@ -114,8 +115,8 @@ const Index = (props) => {
   // }
   return (
     <>
-      {/* {JSON.stringify(props.data)}
-      {console.log(props.data)} */}
+      {/* {JSON.stringify(props.data)} */}
+      {/* {console.log("data",props.data)} */}
       <Head>
         <title> Halaman Profile Perusahaan</title>
         <link rel='icon' href='/logoheaderputih.svg' />
@@ -135,7 +136,7 @@ const Index = (props) => {
               <div className="d-flex flex-row justify-content-center">
                 <Image src='/luis.png' width={150} height={150} alt="imgAva" />
               </div>
-              {
+              { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
                 props.data.map((item, index) => (
                   <div key={index} className="d-flex flex-column align-items-center mt-4">
                     <span className={styles.nameCompany}>{item.perusahaan}</span>
@@ -143,7 +144,7 @@ const Index = (props) => {
                   </div>
                 ))
               }
-              {
+              { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
                 props.data.map((item, index) => (
                   <div key={index} className="d-flex flex-row justify-content-center">
                     <Image src='/mappin.svg' height={25} width={10} alt="icMap" />
@@ -151,7 +152,7 @@ const Index = (props) => {
                   </div>
                 ))
               }
-              {
+              { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
                 props.data.map((item, index) => (
                   <div key={index} className="d-flex flex-column align-items-center">
                     <span className={`col-md-7 text-center ${styles.textDeskripsi}`}>{item.deskripsi == null ? (<span>.....</span>) : (<span>{item.deskripsi}</span>)}</span>
@@ -162,7 +163,7 @@ const Index = (props) => {
                 ))
               }
               <div className="d-flex flex-column align-items-center">
-                {
+                { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
                   props.data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-5 col-md-2">
                       <Image src='/iconMail.svg' height={30} width={30} alt="icEmail" />
@@ -170,7 +171,7 @@ const Index = (props) => {
                     </div>
                   ))
                 }
-                {
+                { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
                   props.data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-3 col-md-2">
                       <Image src='/iconIg.svg' height={30} width={30} alt="icInsta" />
@@ -178,7 +179,7 @@ const Index = (props) => {
                     </div>
                   ))
                 }
-                {
+                { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
                   props.data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-3 col-md-2">
                      
@@ -188,7 +189,7 @@ const Index = (props) => {
                     </div>
                   ))
                 }
-                {
+                { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
                   props.data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-3 col-md-2">
                       <Image src='/iconLinkedin.png' height={30} width={30} alt="icLinkedin" />
