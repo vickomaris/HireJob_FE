@@ -84,32 +84,34 @@ import axios from 'axios'
 //   }
 // }
 
-const Index = (props) => {
+const Index = () => {
   // console.log(props.data)
-  // const router = useRouter()
+  const router = useRouter()
   // const { id } = router.query
-  // const [data, setData] = useState([])
+  const [data, setData] = useState([])
   // const [iniLocal, setIniLocal] = useState('')
 
-  // useEffect(() => {
-  //   const id_perekrut_localstorage = JSON.parse(localStorage.getItem("data"));
-  //   setIniLocal(id_perekrut_localstorage)
-  //   getId()
-  // }, [])
-
+  useEffect(() => {
+    const id_perekrut_localstorage = JSON.parse(localStorage.getItem("data"));
+    // setIniLocal(id_perekrut_localstorage.id_perekrut)
+    // console.log(id_perekrut_localstorage.id_perekrut)
+    // getId()
+    const id = id_perekrut_localstorage.id_perekrut
+ 
   // const getId = () => {
-  //   axios.get(`${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`)
-  //     .then((response) => {
-  //       console.log(response.data)
-  //       setData(response.data)
-  //     })
-  //     .catch((error) => {
-  //       console.error(error)
-  //     })
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`)
+      .then((response) => {
+        // console.log(response.data)
+        setData(response.data)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   // }
+   }, [])
   return (
     <>
-      {/* {JSON.stringify(props.data)} */}
+      {/* {JSON.stringify(data)} */}
       {/* {console.log("data",props.data)} */}
       <Head>
         <title> Halaman Profile Perusahaan</title>
@@ -130,51 +132,51 @@ const Index = (props) => {
               <div className="d-flex flex-row justify-content-center">
                 <Image src='/luis.png' width={150} height={150} alt="imgAva" />
               </div>
-              { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
-                props.data.map((item, index) => (
+              { 
+                  data.map((item, index) => (
                   <div key={index} className="d-flex flex-column align-items-center mt-4">
                     <span className={styles.nameCompany}>{item.perusahaan}</span>
                     <span className={styles.bidangCompany}>{item.bidang == null ? (<span>.....</span>) : (<span>{item.bidang}</span>)}</span>
                   </div>
                 ))
               }
-              { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
-                props.data.map((item, index) => (
+              { 
+                  data.map((item, index) => (
                   <div key={index} className="d-flex flex-row justify-content-center">
                     <Image src='/mappin.svg' height={25} width={10} alt="icMap" />
                     <span className={`ms-2 ${styles.textLocation}`}>{item.kota == null ? (<span>.....</span>) : (<span>{item.kota}</span>)}</span>
                   </div>
-                ))
-              }
-              { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
-                props.data.map((item, index) => (
+                  ))
+                }
+              { 
+                  data.map((item, index) => (
                   <div key={index} className="d-flex flex-column align-items-center">
                     <span className={`col-md-7 text-center ${styles.textDeskripsi}`}>{item.deskripsi == null ? (<span>.....</span>) : (<span>{item.deskripsi}</span>)}</span>
                     <Link href={`/editperekrut/${item.id_perekrut}`}>
                       <button className={`mt-3 ${styles.btnEdit}`}> Edit Profile</button>
                     </Link>
                   </div>
-                ))
-              }
+                  ))
+                }
               <div className="d-flex flex-column align-items-center">
-                { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
-                  props.data.map((item, index) => (
+                { 
+                  data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-5 col-md-2">
                       <Image src='/iconMail.svg' height={30} width={30} alt="icEmail" />
                       <span className={`ms-4 ${styles.textContact}`}>{item.email == null ? (<span>.....</span>) : (<span>{item.email}</span>)}</span>
                     </div>
                   ))
                 }
-                { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
-                  props.data.map((item, index) => (
+                { 
+                  data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-3 col-md-2">
                       <Image src='/iconIg.svg' height={30} width={30} alt="icInsta" />
                       <span className={`ms-4 ${styles.textContact}`}>{item.instagram == null ? (<span>.....</span>) : (<span>{item.instagram}</span>)}</span>
                     </div>
                   ))
                 }
-                { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
-                  props.data.map((item, index) => (
+                { 
+                  data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-3 col-md-2">
                      
                       <Image src='/iconPhone.png' height={30} width={30} alt="icPhone" />
@@ -183,8 +185,8 @@ const Index = (props) => {
                     </div>
                   ))
                 }
-                { props.data === null ?  (<div> <h1>loading</h1> </div> ) :
-                  props.data.map((item, index) => (
+                { 
+                  data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-3 col-md-2">
                       <Image src='/iconLinkedin.png' height={30} width={30} alt="icLinkedin" />
                       <span className={`ms-4 ${styles.textContact}`}>{item.linkedin == null ? (<span>.....</span>) : (<span>{item.linkedin}</span>)}</span>
