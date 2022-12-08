@@ -31,63 +31,58 @@ import axios from 'axios'
 //       }
 //   }
 // }
-export async function getStaticProps(context) {
-  try {
-    const {id} = context.params;
-    // console.log("iniid",id)
-    // const response = await axios({
-    //     method: 'GET',
-    //     url: `${process.env.NEXT_PUBLIC_API_URL}/recruiter/list/${id}`,
-    // })
-    
-    const resultList = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`,
-      {
-        method: "GET",
-      }
-    )
-    
-    const data = await resultList.json();
-    console.log("iniprint",data)
-    return {
-        props: {
-            data: data
-        },
-        revalidate: 1,
-        notFound: false
-    }
-  } 
-  
-  catch (err) {
-    return {
-        props: {
-            data: null
-        },
-        revalidate: 1,
-        notFound: true
-    }
-  }
-}
+//DIBAWAH SSG FETCH
+// export async function getStaticProps(context) {
+//   try {
+//     const {id} = context.params;
+//     // console.log("iniid",id)
 
-// Generates `/posts/1` and `/posts/2`
-export async function getStaticPaths() {
-  const response = await axios({
-      method: "GET",
-      url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut/`
-  })
-  // console.log("inidatanya",response.data.data.rows)
-  const paths = response.data.data.rows.map((item) => {
-      return { params: { id: item.id_perekrut.toString() } }
-  })
+//     const resultList = await fetch(
+//       `${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`,
+//       {
+//         method: "GET",
+//       }
+//     )
+    
+//     const data = await resultList.json();
+//     // console.log("iniprint",data)
+//     return {
+//         props: {
+//             data: data
+//         },
+//         revalidate: 1,
+//         notFound: false
+//     }
+//   } 
   
-  // console.log(paths)
-  return {
-      //   paths: [{ params: { id: '97' } }, { params: { id: '100' } }],
+//   catch (err) {
+//     return {
+//         props: {
+//             data: null
+//         },
+//         revalidate: 1,
+//         notFound: true
+//     }
+//   }
+// }
 
-      paths,
-      fallback:"blocking", // can also be true or 'blocking'
-  }
-}
+// // Generates `/posts/1` and `/posts/2`
+// export async function getStaticPaths() {
+//   const response = await axios({
+//       method: "GET",
+//       url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut/`
+//   })
+//   // console.log("inidatanya",response.data.data.rows)
+//   const paths = response.data.data.rows.map((item) => {
+//       return { params: { id: item.id_perekrut.toString() } }
+//   }) 
+//   // console.log(paths)
+//   return {
+//       //   paths: [{ params: { id: '97' } }, { params: { id: '100' } }],
+//       paths,
+//       fallback:"blocking", // can also be true or 'blocking'
+//   }
+// }
 
 const Index = (props) => {
   // console.log(props.data)
@@ -110,7 +105,6 @@ const Index = (props) => {
   //     })
   //     .catch((error) => {
   //       console.error(error)
-  //       // router.push('/login')
   //     })
   // }
   return (
