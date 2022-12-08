@@ -7,31 +7,67 @@ import styles from '../../styles/ProfilePerekrut.module.css'
 import axios from 'axios'
 
 //get by SSG
+// export async function getStaticProps(context) {
+//   try {
+//       const { id } = context.params
+//       const response = await axios({
+//           method: "GET",
+//           url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`
+//       })
+//       return {
+//           props: {
+//               data: response.data
+//           }, // will be passed to the page component as props
+//           revalidate: 15,
+//           notFound: false
+//       }
+//   } catch (error) {
+//       return {
+//           props: {
+//               data: null
+//           },
+//           revalidate: 10,
+//           notFound: true
+//       }
+//   }
+// }
 export async function getStaticProps(context) {
   try {
-      const { id } = context.params
-      const response = await axios({
-          method: "GET",
-          url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`
-      })
-      return {
-          props: {
-              data: response.data
-          }, // will be passed to the page component as props
-          revalidate: 15,
-          notFound: false
+    const {id} = context.params;
+    // console.log("iniid",id)
+    // const response = await axios({
+    //     method: 'GET',
+    //     url: `${process.env.NEXT_PUBLIC_API_URL}/recruiter/list/${id}`,
+    // })
+    
+    const resultList = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/perekrut/${id}`,
+      {
+        method: "GET",
       }
-  } catch (error) {
-      return {
-          props: {
-              data: null
-          },
-          revalidate: 10,
-          notFound: true
-      }
+    )
+    
+    const data = await resultList.json();
+    // console.log("iniprint",data)
+    return {
+        props: {
+            data: data
+        },
+        revalidate: 1,
+        notFound: false
+    }
+  } 
+  
+  catch (err) {
+    return {
+        props: {
+            data: null
+        },
+        revalidate: 1,
+        notFound: true
+    }
   }
 }
-
 
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
@@ -39,18 +75,21 @@ export async function getStaticPaths() {
       method: "GET",
       url: `${process.env.NEXT_PUBLIC_API_URL}/perekrut/`
   })
+  // console.log("inidatanya",response.data.data.rows)
   const paths = response.data.data.rows.map((item) => {
       return { params: { id: item.id_perekrut.toString() } }
   })
+  
   // console.log(paths)
   return {
       //   paths: [{ params: { id: '97' } }, { params: { id: '100' } }],
       paths,
-      fallback: "blocking", // can also be true or 'blocking'
+      fallback:"blocking", // can also be true or 'blocking'
   }
 }
 
 const Index = (props) => {
+  console.log(props.data)
   // const router = useRouter()
   // const { id } = router.query
   // const [data, setData] = useState([])
@@ -75,7 +114,8 @@ const Index = (props) => {
   // }
   return (
     <>
-      {/* {JSON.stringify(props.data)} */}
+      {/* {JSON.stringify(props.data)}
+      {console.log(props.data)} */}
       <Head>
         <title> Halaman Profile Perusahaan</title>
         <link rel='icon' href='/logoheaderputih.svg' />
