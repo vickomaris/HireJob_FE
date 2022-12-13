@@ -6,34 +6,34 @@ import Image from 'next/image'
 import styles from '../../styles/HomeLanding.module.css'
 // import { useRouter } from 'next/router'
 
-export async function getServerSideProps(context) {
-  try {
-    const response = await axios({
-      method: 'GET',
-      url: `${process.env.NEXT_PUBLIC_API_URL
-      }/user?sort=${sort}&asc=${asc}&limit=${limit}${
-        page ? `&page=${page}` : ""
-      }`
-    })
-    console.log(response.data)
-    return {
-      props: {
-        data: response.data,
-        error: false,
-        errorMessage: ""
-      }
-    }
-  }
-  catch (error) {
-    return {
-      props: {
-        data: [],
-        error: true,
-        errorMessage: "error API"
-      }
-    }
-  }
-}
+// export async function getServerSideProps(context) {
+//   try {
+//     const response = await axios({
+//       method: 'GET',
+//       url: `${process.env.NEXT_PUBLIC_API_URL
+//       }/user?sort=${sort}&asc=${asc}&limit=${limit}${
+//         page ? `&page=${page}` : ""
+//       }`
+//     })
+//     console.log(response.data)
+//     return {
+//       props: {
+//         data: response.data,
+//         error: false,
+//         errorMessage: ""
+//       }
+//     }
+//   }
+//   catch (error) {
+//     return {
+//       props: {
+//         data: [],
+//         error: true,
+//         errorMessage: "error API"
+//       }
+//     }
+//   }
+// }
 
 
 const Index = () => {
@@ -143,11 +143,11 @@ const Index = () => {
                       Sort
                     </button>
                     <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" href="#" onClick={()=> handleSortasc()}>Sortir berdasarkan{asc}</Link></li>
+                      <li><Link className="dropdown-item" href="#" onClick={()=> handleSortasc()}>Sortir berdasarkan {asc}</Link></li>
                       <li><Link className="dropdown-item" href="#" onClick={()=> handleSorting()}>Sortir berdasarkan {sort}</Link></li>
-                      <li><Link className="dropdown-item" href="#">Sortir berdasarkan Lokasi</Link></li>
+                      {/* <li><Link className="dropdown-item" href="#">Sortir berdasarkan Lokasi</Link></li>
                       <li><Link className="dropdown-item" href="#">Sortir berdasarkan freelance</Link></li>
-                      <li><Link className="dropdown-item" href="#">Sortir berdasarkan fulltime</Link></li>
+                      <li><Link className="dropdown-item" href="#">Sortir berdasarkan fulltime</Link></li> */}
                     </ul>
                   </div>
                 </span>
