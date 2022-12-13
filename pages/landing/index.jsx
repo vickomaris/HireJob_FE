@@ -164,9 +164,9 @@ const index = () => {
             </div>
             <div className="col">
             <div className="card h-100 px-5 py-4 align-items-center">
-                <Image src='/harry.png' width={120} height={120} className={styles.photoImage} alt="2" />
+                <Image src='/Niall.png' width={120} height={120} className={styles.photoImage} alt="2" />
                   <div className="card-body">
-                    <h5 className={`card-title ${styles.textName}`}>Harry Styles</h5>
+                    <h5 className={`card-title ${styles.textName}`}>Niall Horan</h5>
                     <p className={styles.textProfession}> Web Developer </p>
                     <p className={`card-text ${styles.textDescription}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
                   </div>
@@ -174,9 +174,9 @@ const index = () => {
             </div>
             <div className="col">
             <div className="card h-100 px-5 py-4 align-items-center">
-                <Image src='/harry.png' width={120} height={120} className={styles.photoImage} alt="harry" />
+                <Image src='/Louis.png' width={120} height={120} className={styles.photoImage} alt="harry" />
                   <div className="card-body">
-                    <h5 className={`card-title ${styles.textName}`}>Harry Styles</h5>
+                    <h5 className={`card-title ${styles.textName}`}>Louis Tomlinson</h5>
                     <p className={styles.textProfession}> Web Developer </p>
                     <p className={`card-text ${styles.textDescription}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
                   </div>
@@ -192,7 +192,7 @@ const index = () => {
               <div className={`col-md-12 d-flex flex-row ${styles.rectanglePurple}`}>
                 <p className={`col-md-3  ${styles.textRectanglepurple}`}> Lorem ipsum dolor sit amet </p>
                 <div className={`col-md-9 d-flex flex-row align-items-center justify-content-end ${styles.btncosutmRecPurple}`}>
-                   <button> Mulai Daftar Sekarang</button>
+                   <button> Mulai Daftar Sekarang </button>
                 </div>
               </div>
             </div>

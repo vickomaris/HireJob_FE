@@ -73,10 +73,13 @@ const Detail = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className={`col-md-4 p-5 ${styles.leftside}`}>
-                            <div className="d-flex flex-row justify-content-center">
-                                <Image src='/luis.png' width={150} height={150} alt="ava" />
-
-                            </div>
+                        {
+                                props.data.map((item, index) => (
+                                <div key={index} className="d-flex flex-row justify-content-center">
+                                    <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{borderRadius:"100%"}} alt='luis'/>
+                                </div>
+                                ))
+                            }
                             {/* {
                                 props.data.map((item, index) => (
                                     <div key={index}> {item.id_user !== iniLocal.id_user ? ('') : (<div className="d-flex flex-row">

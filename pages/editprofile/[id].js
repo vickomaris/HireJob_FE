@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -42,6 +42,38 @@ const UpdateProfile = () => {
                 // router.push('/home')
             })
     }
+
+    const hiddenFileInput = useRef(null);
+    // const navigate = useNavigate();
+    const [image, setImage] = useState('');
+
+    const handleClick = (event) => {
+        hiddenFileInput.current.click();
+    };
+    const UpdatePhoto = (event) => {
+        const fileUploaded = event.target.files[0];
+        document.getElementById("addphoto").innerHTML = fileUploaded.name;
+        setImage(fileUploaded);
+    };
+    const updateForm = (event) => {
+        const data = JSON.parse(localStorage.getItem("data"));
+        const id = data.id_user
+        event.preventDefault();
+        let formData = new FormData();
+        formData.append("image", image);
+        // handlePost(Object.fromEntries(formData));
+        axios
+            .put(`${process.env.NEXT_PUBLIC_API_URL}/user/photo/${id}`, formData)
+            .then((res) => {
+                console.log(res);
+                alert("Update Success");
+                router.push('/home');
+            })
+            .catch((err) => {
+                console.log(err);
+                alert("Update Failed");
+            })
+    };
 
     const handlePost = (e) => {
         const data = JSON.parse(localStorage.getItem("data"));
@@ -107,9 +139,13 @@ const UpdateProfile = () => {
                     <div className="row">
                         <div className={`col-md-4  ${styles.leftside}`}>
                             <div className={`p-5  ${styles.cardProfile}`}>
-                                <div className="d-flex flex-row justify-content-center">
-                                    <Image src='/luis.png' width={150} height={150} alt='luis'/>
+                            {
+                                data.map((item, index) => (
+                                <div key={index} className="d-flex flex-row justify-content-center">
+                                    <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{borderRadius:"100%"}} alt='ava'/>
                                 </div>
+                                ))
+                            }
                                 {
                                     data.map((item, index) => (
                                         <div key={index} className="d-flex flex-column mt-5">
@@ -134,7 +170,18 @@ const UpdateProfile = () => {
                                         </div>
                                     ))
                                 }
+                                <input className="form-control" 
+                                    type="file" 
+                                    ref={hiddenFileInput} 
+                                    htmlFor="image" 
+                                    onClick={handleClick} 
+                                    id="addphoto" 
+                                    style={{ display: "none" }}
+                                    onChange={UpdatePhoto} />
+                                    <div className="text-center" type="button" htmlFor="image" onClick={handleClick}  >
+                                        <br />Edit Photo</div>
                             </div>
+                            <button type="submit" className='btn d-grid gap-2 col-3 mx-auto' onClick={updateForm} > Post </button>
                             <div className="leftsideBottom">
                                 <button onClick={(e) => deleteRow(e)} className={`col-12 mt-4 ${styles.btnSimpan}`}>Delete</button>
                                 <Link href={'/profile'}>

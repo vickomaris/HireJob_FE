@@ -163,13 +163,13 @@ const Index = () => {
               data2.length === 0 ? data.map ((item, index) => (
                 <div key={index} className={`col-md-12 mb-1 ${styles.content}`}>
                   <div  className="d-flex flex-row p-3">
-                    <Image src='/luis.png' height={100} width={100} className="col-md-1" alt='luis' />
+                    <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} height={100} width={100} className="col-md-1" style={{borderRadius:"100%"}} alt='ava' />
                     <div className="col-md-5 d-flex flex-column ms-5">
                       <p className={styles.textName}>{item.username}</p>
                       <p className={styles.textProfession}>{item.jobdesk}</p>
                       <div className="d-flex flex-row">
                         <Image src='/mappin.svg' height={25} width={10} alt='map' />
-                        <p className={`ms-2 ${styles.textLocation}`}>Lorem ipsum</p>
+                        <p className={`ms-2 ${styles.textLocation}`}>{item.city}</p>
                       </div>
                       <div className="d-flex flex-row">
                         <ul className='p-0'>
