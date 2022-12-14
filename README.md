@@ -22,7 +22,7 @@ This app was built with some technologies below:
 - [Bootstrap](https://getbootstrap.com/)
 - [Axios](https://axios-http.com/)
 - [Postgresql](https://www.postgresql.org/)
-- [and se more for dependecy on package.json](https://github.com/vickomaris/HireJob_FE/blob/master/package.json) 
+- [and see more for dependecy on package.json](https://github.com/vickomaris/HireJob_FE/blob/master/package.json) 
 
 ## Screenshoots
 <details>
@@ -46,7 +46,7 @@ This app was built with some technologies below:
   <summary>
    Home Page
   </summary>
-<img src="/screenshoots/home.png" alt="Home" />
+<img src="/screenshoots/home.jpeg" alt="Home" />
 </details>
 
 <details>
@@ -61,8 +61,7 @@ This app was built with some technologies below:
   <summary>
     Profile Prekrut Page
   </summary>
-<img src="/screenshoots/profileprekrut.png" alt="Profile" />
-<img src="/screenshoots/updateprekrut.png" alt="Update Profile" />
+<img src="/screenshoots/profileperusahaan.jpeg" alt="Profile" />
 </details>
 
 ## Structure Folder 

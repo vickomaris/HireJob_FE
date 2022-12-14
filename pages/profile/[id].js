@@ -59,6 +59,7 @@ const Detail = (props) => {
     //         })
     // }
     return (
+        
         <div>
             <section className="top">
                 <div className="container-fluid">

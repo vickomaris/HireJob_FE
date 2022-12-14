@@ -5,8 +5,6 @@ import styles from '../styles/Navbar.module.css'
 
 const Navbar = () => {
     const [data, setData] = useState([])
-    // let image ="";
-    // const data = typeof window !== "undefined" ? JSON.parse(localStorage.getItem('data')) : null
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("data"));
         // const data1 = data.id_user
@@ -35,7 +33,7 @@ const Navbar = () => {
                             <li className="nav-item ms-4">
                                 {/* <Link className="nav-link" href={`/profile/${data}`}><Image src='/iconprofNav.svg' height={10} width={100} className={` ${styles.picNav}`} /> </Link> */}
 
-                                <Link className="nav-link" href={`/profile/${data}`}>
+                                <Link className="nav-link" href={`/profile/${data.id_user}`}>
                                     <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${data.image}`} height={50} width={50} className={`${styles.picNav}`} alt="ava" /> </Link>
                             </li>
                         </ul>
