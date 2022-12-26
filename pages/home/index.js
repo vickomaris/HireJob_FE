@@ -62,6 +62,7 @@ const Index = () => {
 
   useEffect(() => {
     getDatauser(sort, asc, 5, page)
+    
   }, [sort, asc, page])
 
   const getDatauser = (sort, asc, limit, page) => {
@@ -109,6 +110,9 @@ const Index = () => {
       getDatauser(sort, asc, 5, page-1)
     }
   };
+
+  
+  
 
   return (
     <>
@@ -172,11 +176,17 @@ const Index = () => {
                         <p className={`ms-2 ${styles.textLocation}`}>{item.city}</p>
                       </div>
                       <div className="d-flex flex-row">
-                        <ul className='p-0'>
-                          <li className={`${styles.textSkill} px-4 py-2 me-3`}>PHP</li>
-                          <li className={`${styles.textSkill} px-4 py-2 me-3`}>JavaScript</li>
-                          <li className={`${styles.textSkill} px-4 py-2 me-3`}>HTML</li>
-                        </ul>
+                      {item.skill != null ? (
+														item.skill.split(",").map((item, index) => (
+															<p
+																key={index}
+																className={`m-1 p-1 ${styles.textSkill}`}>
+																{item}
+															</p>
+														))
+													) : (
+														<p className="text-secondary">No skill</p>
+													)}
                       </div>
                     </div>
                     <div className="col-md-5 d-flex flex-row align-items-center justify-content-end">

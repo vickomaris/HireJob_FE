@@ -21,7 +21,8 @@ const UpdateProfile = () => {
         ig: data.ig,
         github: data.github,
         gitlab: data.gitlab,
-        statusjob: data.statusjob
+        statusjob: data.statusjob,
+        skill: data.skill
     })
 
     useEffect(() => {
@@ -89,7 +90,8 @@ const UpdateProfile = () => {
             ig: update.ig,
             github: update.github,
             gitlab: update.gitlab,
-            statusjob: update.statusjob
+            statusjob: update.statusjob,
+            skill: update.skill
         }
         axios
             .put(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`, form)
@@ -119,6 +121,101 @@ const UpdateProfile = () => {
                 console.log(err);
             });
     }
+
+    //portofolio
+    const [imagePortofolio, setImagePortofolio] = useState();
+
+    const handleImagePorto = (event) => {
+        const fileUploaded = event.target.files[0];
+        document.getElementById("formFileimage").innerHTML = fileUploaded.name;
+        setImagePortofolio(fileUploaded);
+    };
+
+    const [formporto, setFormporto] = useState({
+        name: '',
+        linkrepo: '',
+        imageporto: '',
+        type: '',
+        // id_user:'',
+    })
+
+    const onSubmitporto = (e) => {
+        e.preventDefault();
+        const data = JSON.parse(localStorage.getItem("data"));
+        const id_user = data.id_user;
+        // console.log(form)
+
+        // const body = {
+        //     name: formporto.name,
+        //     linkrepo: formporto.linkrepo,
+        //     imageporto: formporto.imageporto,
+        //     type: formporto.type,
+        //     id_user: id_user
+        // }
+        const inputForm = new FormData();
+        inputForm.append("name", formporto.name);
+        inputForm.append("linkrepo", formporto.linkrepo);
+        inputForm.append("imageporto", imagePortofolio);
+        inputForm.append("type", formporto.type);
+        inputForm.append("id_user", id_user);
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/portofolio/insert`, inputForm)
+            .then((response) => {
+                // if(response.data.code !== 200){
+                //     alert('error:' + response.data.message)
+                // }
+                if (response.data.status != 'success') {
+                    alert(response.data.message)
+                } else {
+                    alert("data berhasil ditambahkan")
+                    console.log(response.data)
+                    router.push(`/profile/${id_user}`)
+                }
+                // console.log(response.data)
+
+            }).catch((err) => {
+                console.error(err)
+            })
+    }
+
+    //experience
+    const [formexperience, setFormexperience] = useState({
+        posisi: '',
+        companyexp: '',
+        startyear: '',
+        endyear: '',
+        descriptionexp: '',
+        // id_user:'',
+    })
+
+    const onSubmitexperience = (e) => {
+        e.preventDefault();
+        const data = JSON.parse(localStorage.getItem("data"));
+        const id_user = data.id_user;
+
+        const inputExp = {
+            posisi: formexperience.posisi,
+            companyexp: formexperience.companyexp,
+            startyear: formexperience.startyear,
+            endyear: formexperience.endyear,
+            descriptionexp: formexperience.descriptionexp,
+            id_user: id_user,
+        }
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/experience/insert`, inputExp)
+            .then((response) => {
+                if (response.data.status != 'success') {
+                    alert(response.data.message)
+                } else {
+                    alert("data berhasil ditambahkan")
+                    console.log(response.data)
+                    router.push(`/profile/${id_user}`)
+                }
+                // console.log(response.data)
+
+            }).catch((err) => {
+                console.error(err)
+            })
+    }
+
     return (
         <div>
             <Head>
@@ -139,13 +236,13 @@ const UpdateProfile = () => {
                     <div className="row">
                         <div className={`col-md-4  ${styles.leftside}`}>
                             <div className={`p-5  ${styles.cardProfile}`}>
-                            {
-                                data.map((item, index) => (
-                                <div key={index} className="d-flex flex-row justify-content-center">
-                                    <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{borderRadius:"100%"}} alt='ava'/>
-                                </div>
-                                ))
-                            }
+                                {
+                                    data.map((item, index) => (
+                                        <div key={index} className="d-flex flex-row justify-content-center">
+                                            <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{ borderRadius: "100%" }} alt='ava' />
+                                        </div>
+                                    ))
+                                }
                                 {
                                     data.map((item, index) => (
                                         <div key={index} className="d-flex flex-column mt-5">
@@ -170,24 +267,28 @@ const UpdateProfile = () => {
                                         </div>
                                     ))
                                 }
-                                <input className="form-control" 
-                                    type="file" 
-                                    ref={hiddenFileInput} 
-                                    htmlFor="image" 
-                                    onClick={handleClick} 
-                                    id="addphoto" 
+                                <input className="form-control"
+                                    type="file"
+                                    ref={hiddenFileInput}
+                                    htmlFor="image"
+                                    onClick={handleClick}
+                                    id="addphoto"
                                     style={{ display: "none" }}
                                     onChange={UpdatePhoto} />
-                                    <div className="text-center" type="button" htmlFor="image" onClick={handleClick}  >
-                                        <br />Edit Photo</div>
+                                <div className="text-center" type="button" htmlFor="image" onClick={handleClick}  >
+                                    <br />Edit Photo</div>
                             </div>
                             <button type="submit" className='btn d-grid gap-2 col-3 mx-auto' onClick={updateForm} > Post </button>
-                            <div className="leftsideBottom">
-                                <button onClick={(e) => deleteRow(e)} className={`col-12 mt-4 ${styles.btnSimpan}`}>Delete</button>
-                                <Link href={'/profile'}>
-                                    <button className={` col-12 mt-4 ${styles.btnBatal}`}>Batal</button>
-                                </Link>
-                            </div>
+                            {
+                                data.map((item, index) => (
+                                    <div key={index} className="leftsideBottom">
+                                        <button onClick={(e) => deleteRow(e)} className={`col-12 mt-4 ${styles.btnSimpan}`}>Delete</button>
+                                        <Link href={`/profile/${item.id_user}`}>
+                                            <button className={` col-12 mt-4 ${styles.btnBatal}`}>Batal</button>
+                                        </Link>
+                                    </div>
+                                ))
+                            }
                         </div>
                         <div className={`col-md-8 ${styles.rightside}`}>
                             <div className={`p-5 ${styles.rightsideDatadiri}`}>
@@ -317,6 +418,18 @@ const UpdateProfile = () => {
                                                         onChange={(e) => setUpdate({ ...update, statusjob: e.target.value })} />
                                                     <label for="floatingInput" className={`px-4 ${styles.holderInput}`}>Masukan statusjob</label>
                                                 </div>
+                                                <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Skill </p>
+                                                <div className="form-floating px-4">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        id="floatingInput"
+                                                        placeholder="Masukan Skill"
+                                                        name="Javascript"
+                                                        defaultValue={item.skill}
+                                                        onChange={(e) => setUpdate({ ...update, skill: e.target.value })} />
+                                                    <label for="floatingInput" className={`px-4 ${styles.holderInput}`}>Masukan Skill</label>
+                                                </div>
                                                 <div className="d-flex flex-column px-3">
                                                     <button type="submit" className={`mt-5 ${styles.btnExp}`}>Simpan</button>
                                                 </div>
@@ -326,7 +439,7 @@ const UpdateProfile = () => {
                                 </form>
 
                             </div>
-                            <div className={`p-5 mt-5 ${styles.rightsideSkill}`}>
+                            {/* <div className={`p-5 mt-5 ${styles.rightsideSkill}`}>
                                 <div className="  ps-4 d-flex flex-column">
                                     <p className={styles.textTitle}>Skill </p>
                                 </div>
@@ -338,82 +451,102 @@ const UpdateProfile = () => {
                                     </div>
                                     <button className={`ms-3 ${styles.btnSimpan}`}>Simpan</button>
                                 </div>
-                            </div>
-                            <div className={`p-5 mt-5 ${styles.rightsideExp}`}>
-                                <div className="  ps-4 d-flex flex-column">
-                                    <p className={styles.textTitle}> Pengalaman Kerja </p>
-                                </div>
-                                <hr />
-                                <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Posisi </p>
-                                <div className="form-floating px-4">
-                                    <input type="text" className="form-control" id="floatingInput" placeholder="web developer" />
-                                    <label for="floatingInput" className={`px-4 ${styles.holderInput}`}>web developer</label>
-                                </div>
-                                <div className="d-flex flex-row">
-                                    <div className="col-md-6 d-flex flex-column mt-3">
-                                        <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Nama Perusahaan </p>
-                                        <div className="form-floating  px-4">
-                                            <input type="text" className="form-control " id="floatingInputSkill" placeholder="PT Harus bisa " />
-                                            <label for="floatingInputSkill" className={`px-4 ${styles.holderInput}`}>PT Harus bisa</label>
+                            </div> */}
+
+                            <form onSubmit={(e) => onSubmitexperience(e)}>
+                                <div className={`p-5 mt-5 ${styles.rightsideExp}`}>
+                                    <div className="  ps-4 d-flex flex-column">
+                                        <p className={styles.textTitle}> Pengalaman Kerja </p>
+                                    </div>
+                                    <hr />
+                                    <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Posisi </p>
+                                    <div className="form-floating px-4">
+                                        <input type="text" className="form-control" id="floatingInput" placeholder="webdeveloper" onChange={(e) => setFormexperience({ ...formexperience, posisi: e.target.value})} />
+                                            <label for="floatingInput" className={`px-4 ${styles.holderInput}`}>Web Developer</label>
+                                    </div>
+                                    <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Nama Perusahaan </p>
+                                    <div className="form-floating px-4">
+                                        <input type="text" className="form-control" id="floatingInput" placeholder="PTHarusBisa"
+                                        onChange={(e) => setFormexperience({ ...formexperience, companyexp: e.target.value})} />
+                                        <label for="floatingInput" className={`px-4 ${styles.holderInput}`}>PT Harus Bisa </label>
+                                    </div>
+                                    <div className="d-flex flex-row">
+                                        <div className="col-md-6 d-flex flex-column mt-3">
+                                            <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Mulai Bekerja </p>
+                                            <div className="form-floating  px-4">
+                                                <input type="text" className="form-control " id="floatingInput" placeholder="datein"
+                                                onChange={(e) => setFormexperience({ ...formexperience, startyear: e.target.value})} />
+                                                <label for="floatingInput" className={`px-4 ${styles.holderInput}`}>1 Januari 2018</label>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6 d-flex flex-column mt-3">
+                                            <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Akhir Bekerja </p>
+                                            <div className="form-floating px-4">
+                                                <input type="text" className="form-control " id="floatingInput" placeholder="dateout" 
+                                                onChange={(e) => setFormexperience({ ...formexperience, endyear: e.target.value})} />
+                                                <label for="floatingInput" className={`px-4 ${styles.holderInput}`}>1 Januari 2019</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-6 d-flex flex-column mt-3">
-                                        <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Bulan/tahun </p>
-                                        <div className="form-floating px-4">
-                                            <input type="text" className="form-control " id="floatingInputSkill" placeholder="Januari 2018 " />
-                                            <label for="floatingInputSkill" className={`px-4 ${styles.holderInput}`}>Januari 2018</label>
-                                        </div>
+                                    <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Deskripsi singkat </p>
+                                    <div className="form-floating px-4">
+                                        <textarea className="form-control mb-4" placeholder="Tuliskan deskripsi singkat" id="floatingTextarea2" style={{ height: "150px" }} 
+                                        onChange={(e) => setFormexperience({ ...formexperience, descriptionexp: e.target.value})}></textarea>
+                                        <label for="floatingTextarea2" className={`px-4 ${styles.holderInput}`}>Tuliskan deskripsi singkat</label>
+                                    </div>
+                                    <hr />
+                                    <div className="d-flex flex-column px-3">
+                                        <button type="submit" className={`mt-5 ${styles.btnExp}`}>Tambah pengalaman kerja</button>
                                     </div>
                                 </div>
-                                <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Deskripsi singkat </p>
-                                <div className="form-floating px-4">
-                                    <textarea className="form-control mb-4" placeholder="Tuliskan deskripsi singkat" id="floatingTextarea2"></textarea>
-                                    <label for="floatingTextarea2" className={`px-4 ${styles.holderInput}`}>Tuliskan deskripsi singkat</label>
-                                </div>
-                                <hr />
-                                <div className="d-flex flex-column px-3">
-                                    <button className={`mt-5 ${styles.btnExp}`}>Tambah pengalaman kerja</button>
-                                </div>
-                            </div>
+                            </form>
+
                             <div className={`p-5 mt-5 ${styles.rightsidePorto}`}>
                                 <div className="  ps-4 d-flex flex-column">
                                     <p className={styles.textTitle}> Portofolio </p>
                                 </div>
                                 <hr />
-                                <div className=" d-flex flex-column mt-4">
-                                    <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Nama aplikasi </p>
-                                    <div className="form-floating px-4">
-                                        <input type="text" className="form-control " id="floatingInputSkill" placeholder="Masukan nama aplikasi " />
-                                        <label for="floatingInputSkill" className={`px-4 ${styles.holderInput}`}>Masukan nama aplikasi</label>
+                                <form onSubmit={(e) => onSubmitporto(e)}>
+                                    <div className=" d-flex flex-column mt-4">
+                                        <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Nama aplikasi </p>
+                                        <div className="form-floating px-4">
+                                            <input type="text"
+                                                className="form-control"
+                                                id="floatingInputSkill"
+                                                placeholder="Masukan nama aplikasi "
+                                                onChange={(e) => setFormporto({ ...formporto, name: e.target.value })} />
+                                            <label for="floatingInputSkill" className={`px-4 ${styles.holderInput}`}>Masukan nama aplikasi</label>
+                                        </div>
+                                        <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Link repository </p>
+                                        <div className="form-floating px-4">
+                                            <input type="text" className="form-control " id="floatingInputSkill" placeholder="Masukan link repository"
+                                                onChange={(e) => setFormporto({ ...formporto, linkrepo: e.target.value })} />
+                                            <label for="floatingInputSkill" className={`px-4 ${styles.holderInput}`}>Masukan link repository</label>
+                                        </div>
                                     </div>
-                                    <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Link repository </p>
-                                    <div className="form-floating px-4">
-                                        <input type="text" className="form-control " id="floatingInputSkill" placeholder="Masukan link repository" />
-                                        <label for="floatingInputSkill" className={`px-4 ${styles.holderInput}`}>Masukan link repository</label>
+                                    <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Type portofolio </p>
+                                    <div className="d-flex flex-row ps-5">
+                                        <div class="form-check me-5">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="0" onChange={(e) => setFormporto({ ...formporto, type: e.target.value })} />
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Aplikasi mobile
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="1" onChange={(e) => setFormporto({ ...formporto, type: e.target.value })} />
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Aplikasi web
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
-                                <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Type portofolio </p>
-                                <div className="d-flex flex-row ps-5">
-                                    <div class="form-check me-5">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            Aplikasi mobile
-                                        </label>
+                                    <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Upload gambar </p>
+                                    <div class="mb-3 px-4">
+                                        <input class="form-control" type="file" id="formFileimage" onChange={handleImagePorto} />
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" defaultChecked />
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Aplikasi web
-                                        </label>
+                                    <div className="d-flex flex-column px-3">
+                                        <button type='submit' className={`mt-5 ${styles.btnExp}`}>Tambah portofolio</button>
                                     </div>
-                                </div>
-                                <p className={`mb-0 mt-4  ps-4 ${styles.labelInput}`}> Upload gambar </p>
-                                <div class="mb-3 px-4">
-                                    <input class="form-control" type="file" id="formFile" />
-                                </div>
-                                <div className="d-flex flex-column px-3">
-                                    <button className={`mt-5 ${styles.btnExp}`}>Tambah portofolio</button>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

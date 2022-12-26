@@ -127,13 +127,16 @@ const UpdatePerekrut = () => {
                                     ))
                                 }
                             </div>
-                            <div className="leftsideBottom">
-                                <button onClick={(e) => deletePerekrut(e)} className={`  col-12 mt-4 ${styles.btnSimpan}`}>Delete</button>
-                                <Link href={'/profileperekrut'}>
-                                    <button className={` col-12 mt-4 ${styles.btnBatal}`}>Batal</button>
-                                </Link>
-                                
-                            </div>
+                            {
+                                data.map((item, index) => (
+                                    <div key={index} className="leftsideBottom">
+                                        <button onClick={(e) => deletePerekrut(e)} className={`  col-12 mt-4 ${styles.btnSimpan}`}>Delete</button>
+                                        <Link href={`/profileperekrut/${item.id_perekrut}`}>
+                                            <button className={` col-12 mt-4 ${styles.btnBatal}`}>Batal</button>
+                                        </Link>
+                                    </div>
+                                ))
+                            }
                         </div>
                         <div className={`col-md-8 ${styles.rightside}`}>
                             <div className={`p-5 ${styles.rightsideDatadiri}`}>

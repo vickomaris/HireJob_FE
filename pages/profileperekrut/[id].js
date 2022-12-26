@@ -178,7 +178,6 @@ const Index = () => {
                 { 
                   data.map((item, index) => (
                     <div key={index} className="d-flex flex-row mt-3 col-md-2">
-                     
                       <Image src='/iconPhone.png' height={30} width={30} alt="icPhone" />
                       <span className={`ms-4 ${styles.textContact}`}>{item.phone == null ? (<span>.....</span>) : (<span>{item.phone}</span>)}</span>
                       

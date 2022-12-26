@@ -36,31 +36,46 @@ export async function getServerSideProps(context) {
 
 
 const Detail = (props) => {
-    // const router = useRouter()
-    // const { id } = router.query
-    // const [data, setData] = useState([])
+    const router = useRouter()
+    const { id } = router.query
+    const [data, setData] = useState([])
+    const [experience, setExperience] = useState([])
+
     // const [iniLocal, setIniLocal] = useState('')
 
-    // useEffect(() => {
-    //     const id_user_localstorage = JSON.parse(localStorage.getItem("data"));
-    //     setIniLocal(id_user_localstorage)
-    //     getId()
-    // }, [])
+    useEffect(() => {
+        // const id_user_localstorage = JSON.parse(localStorage.getItem("data"));
+        // setIniLocal(id_user_localstorage)
+        getPortofolio()
+        getExperience()
+    }, [])
 
-    // const getId = () => {
-    //     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/${id}`)
-    //         .then((response) => {
-    //             console.log(response.data)
-    //             setData(response.data)
-    //         })
-    //         .catch((error) => {
-    //             console.error(error)
-    //             // router.push('/login')
-    //         })
-    // }
+    const getPortofolio = () => {
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/portofolio/user/${id}`)
+            .then((response) => {
+                console.log(response.data.data)
+                setData(response.data.data)
+            })
+            .catch((error) => {
+                console.error(error)
+                // router.push('/login')
+            })
+    }
+    const getExperience = () => {
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/experience/user/${id}`)
+            .then((response) => {
+                console.log(response.data.data)
+                setExperience(response.data.data)
+            })
+            .catch((error) => {
+                console.error(error)
+                // router.push('/login')
+            })
+    }
     return (
-        
+
         <div>
+            {/* {JSON.stringify(data)} */}
             <section className="top">
                 <div className="container-fluid">
                     <div className="row">
@@ -70,15 +85,16 @@ const Detail = (props) => {
                 </div>
             </section>
             {/* {JSON.stringify(props)} */}
+
             <section className={styles.main}>
                 <div className="container">
                     <div className="row">
                         <div className={`col-md-4 p-5 ${styles.leftside}`}>
-                        {
+                            {
                                 props.data.map((item, index) => (
-                                <div key={index} className="d-flex flex-row justify-content-center">
-                                    <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{borderRadius:"100%"}} alt='luis'/>
-                                </div>
+                                    <div key={index} className="d-flex flex-row justify-content-center">
+                                        <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{ borderRadius: "100%" }} alt='luis' />
+                                    </div>
                                 ))
                             }
                             {/* {
@@ -99,7 +115,6 @@ const Detail = (props) => {
                                     </div>
                                 ))
                             }
-
                             {
                                 props.data.map((item, index) => (
                                     <div key={index} className="d-flex flex-column mt-5">
@@ -122,10 +137,14 @@ const Detail = (props) => {
                                     <div key={index} className="d-flex flex-column">
                                         <p className={styles.textStatus}>{item.statusjob}</p>
                                         <p className={styles.textDescription}>{item.description}</p>
-                                        <button className={`mt-4 ${styles.btnHire}`}>Hire</button>
-                                        <Link href='/home'>
-                                            <button className={`mt-4 ${styles.btnHome}`}>Home</button>
+                                        <Link href='/hire'>
+                                            <button className={`mt-4 ${styles.btnHire}`}> Hire</button>
                                         </Link>
+
+                                        <Link href='/home'>
+                                            <button className={`mt-4 ${styles.btnHome}`}> Back Home</button>
+                                        </Link>
+
                                     </div>
                                 ))
                             }
@@ -144,22 +163,7 @@ const Detail = (props) => {
 
                                 </ul>
                             </div>
-                            <div className="d-flex flex-row mt-5">
-                                <Image src='/iconMail.svg' height={30} width={30} alt="mail" />
-                                <p className={`ms-4 ${styles.textContact}`}>Louistommo@gmail.com</p>
-                            </div>
-                            <div className="d-flex flex-row mt-3">
-                                <Image src='/iconIg.svg' height={30} width={30} alt="ig" />
-                                <p className={`ms-4 ${styles.textContact}`}>@Louist91</p>
-                            </div>
-                            <div className="d-flex flex-row mt-3">
-                                <Image src='/iconGithub.svg' height={30} width={30} alt="github" />
-                                <p className={`ms-4 ${styles.textContact}`}>@Louist91</p>
-                            </div>
-                            <div className="d-flex flex-row mt-3">
-                                <Image src='/iconGitlab.svg' height={30} width={30} alt="gitlab"  />
-                                <p className={`ms-4 ${styles.textContact}`}>@Louistommo91</p>
-                            </div>
+
                         </div>
                         <div className={`col-md-7 p-5 ms-4 ${styles.rightside}`}>
                             <div className="d-flex flex-row">
@@ -169,106 +173,51 @@ const Detail = (props) => {
 
                             <div className="d-flex flex-row">
                                 <div className="row">
-                                    <div className="col-md-4 mt-4">
-                                        <div className="collapse" id="collapseExample">
-                                            <div className={styles.portofolioCard}>
-                                                <Image src='/reminder.jpg' width={150} height={150} alt="" className={styles.gambar} />
-                                                <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
-                                                    Remainder app
-                                                </p>
+                                    {data == "" ? (
+                                        <p> Protofolio Masih Kosong </p>
+                                    ) : (
+                                        data.map((item, index) => (
+                                            <div key={index} className="col-md-4 mt-4">
+                                                <div className="collapse" id="collapseExample">
+                                                    <div className={styles.portofolioCard}>
+                                                        <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.imageporto_url}`} width={150} height={150} alt="" className={styles.gambar} />
+                                                        <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
+                                                            {item.name}
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4 mt-4">
-                                        <div className="collapse" id="collapseExample">
-                                            <div className={styles.portofolioCard}>
-                                                <Image src='/sosmed.jpg' width={150} height={150} alt="" className={styles.gambar} />
-                                                <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
-                                                    Social media app
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4 mt-4">
-                                        <div className="collapse" id="collapseExample">
-                                            <div className={styles.portofolioCard}>
-                                                <Image src='/management.jpg' width={150} height={150} alt="" className={styles.gambar} />
-                                                <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
-                                                    Project management web
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4 mt-4">
-                                        <div className="collapse" id="collapseExample">
-                                            <div className={styles.portofolioCard}>
-                                                <Image src='/reminder2.jpg' width={150} height={150} alt="" className={styles.gambar} />
-                                                <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
-                                                    Remainder app
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4 mt-4">
-                                        <div className="collapse" id="collapseExample">
-                                            <div className={styles.portofolioCard}>
-                                                <Image src='/sosmed2.jpg' width={150} height={150} alt="" className={styles.gambar} />
-                                                <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
-                                                    Social media app
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4 mt-4">
-                                        <div className="collapse" id="collapseExample">
-                                            <div className={styles.portofolioCard}>
-                                                <Image src='/management2.jpg' width={150} height={150} alt="" className={styles.gambar} />
-                                                <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
-                                                    Project management web
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        ))
+                                    )
+                                    }
                                     <div className="col-md-12">
                                         <div className="collapse" id="collapseExample2">
                                             <div className={`card ${styles.cardCostum}`}>
                                                 <div className="row g-0">
-                                                    <div className="col-md-3">
+                                                    {/* <div className="col-md-3">
                                                         <Image src='/tokped.jpg' width={150} height={150} alt="..." className={styles.gambarPK} />
-                                                    </div>
-                                                    <div className="col-md-9">
-                                                        <div className="card-body">
-                                                            <p className={styles.textProfessionPK}>Enginer</p>
-                                                            <p className={styles.textCompanyPK}>Tokopedia</p>
-                                                            <div className="d-flex flex-row">
-                                                                <p className={styles.textDatePK}>July 2019 - January 2020</p>
-                                                                <p className={`ms-3 ${styles.textMonthPK}`}> 6 months</p>
+                                                    </div> */}
+                                                    {experience == "" ? (
+                                                        <p> Experience Masih Kosong </p>
+                                                    ) : (
+                                                        experience.map((item, index) => (
+                                                            <div key={index} className="col-md-9">
+                                                                <div className="card-body">
+                                                                    <p className={styles.textProfessionPK}>{item.posisi}</p>
+                                                                    <p className={styles.textCompanyPK}>{item.companyexp}</p>
+                                                                    <div className="d-flex flex-row">
+                                                                        <p className={styles.textDatePK}>{item.startyear} - {item.endyear}</p>
+                                                                    </div>
+                                                                    <p className={`mt-2 ${styles.textDescriptionPK}`}>{item.descriptionexp}</p>
+                                                                    <hr />
+                                                                </div>
                                                             </div>
-                                                            <p className={`mt-2 ${styles.textDescriptionPK}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
-                                                            <hr />
-                                                        </div>
-                                                    </div>
+                                                        ))
+                                                    )
+                                                    }
                                                 </div>
                                             </div>
-                                            <div className={`card ${styles.cardCostum}`}>
-                                                <div className="row g-0">
-                                                    <div className="col-md-3">
-                                                        <Image src='/tokped.jpg' width={150} height={150} alt="..." className={styles.gambarPK} />
-                                                    </div>
-                                                    <div className="col-md-9">
-                                                        <div className="card-body">
-                                                            <p className={styles.textProfessionPK}>Enginer</p>
-                                                            <p className={styles.textCompanyPK}>Tokopedia</p>
-                                                            <div className="d-flex flex-row">
-                                                                <p className={styles.textDatePK}>July 2019 - January 2020</p>
-                                                                <p className={`ms-3 ${styles.textMonthPK}`}> 6 months</p>
-                                                            </div>
-                                                            <p className={`mt-2 ${styles.textDescriptionPK}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
-                                                            <hr />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -280,5 +229,5 @@ const Detail = (props) => {
         </div >
     )
 }
-
+Detail.layout = 'L1'
 export default Detail
