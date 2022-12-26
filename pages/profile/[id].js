@@ -95,7 +95,7 @@ const Detail = (props) => {
                             {
                                 props.data.map((item, index) => (
                                     <div key={index} className="d-flex flex-row justify-content-center">
-                                        <Image src={item.image_url} width={150} height={150} style={{ borderRadius: "100%" }} alt='luis' />
+                                        <Image src={item.image_url ? item.image_url : `${process.env.NEXT_PUBLIC_API_URL}/${item.image}` } width={150} height={150} style={{ borderRadius: "100%" }} alt='luis' />
                                     </div>
                                 ))
                             }
@@ -162,7 +162,6 @@ const Detail = (props) => {
                                     <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2`}>PHP</li>
                                     <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2 `}>Kotlin</li>
                                     <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2 `}>Swift</li>
-
                                 </ul>
                             </div>
 
@@ -199,7 +198,7 @@ const Detail = (props) => {
                                                     {/* <div className="col-md-3">
                                                         <Image src='/tokped.jpg' width={150} height={150} alt="..." className={styles.gambarPK} />
                                                     </div> */}
-                                                    {/* {experience == "" ? (
+                                                    {experience == "" ? (
                                                         <p> Experience Masih Kosong </p>
                                                     ) : (
                                                         experience.map((item, index) => (
@@ -216,7 +215,7 @@ const Detail = (props) => {
                                                             </div>
                                                         ))
                                                     )
-                                                    } */}
+                                                    }
                                                 </div>
                                             </div>
                                             
