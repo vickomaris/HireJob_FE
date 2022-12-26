@@ -75,7 +75,9 @@ const Detail = (props) => {
     return (
 
         <div>
-            {/* {JSON.stringify(data)} */}
+            {JSON.stringify(data)}
+            {JSON.stringify(experience)}
+
             <section className="top">
                 <div className="container-fluid">
                     <div className="row">
@@ -84,19 +86,19 @@ const Detail = (props) => {
                     </div>
                 </div>
             </section>
-            {/* {JSON.stringify(props)} */}
+            {JSON.stringify(props)}
 
             <section className={styles.main}>
                 <div className="container">
                     <div className="row">
                         <div className={`col-md-4 p-5 ${styles.leftside}`}>
-                            {
+                            {/* {
                                 props.data.map((item, index) => (
                                     <div key={index} className="d-flex flex-row justify-content-center">
                                         <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image_url}`} width={150} height={150} style={{ borderRadius: "100%" }} alt='luis' />
                                     </div>
                                 ))
-                            }
+                            } */}
                             {/* {
                                 props.data.map((item, index) => (
                                     <div key={index}> {item.id_user !== iniLocal.id_user ? ('') : (<div className="d-flex flex-row">
@@ -105,7 +107,7 @@ const Detail = (props) => {
                                         </Link></div>)} </div>
                                 )
                                 )} */}
-                            {
+                            {/* {
                                 props.data.map((item, index) => (
                                     <div key={index} className="d-flex flex-row mt-3 justify-content-center">
                                         <Link href={`/editprofile/${item.id_user}`}>
@@ -147,7 +149,7 @@ const Detail = (props) => {
 
                                     </div>
                                 ))
-                            }
+                            } */}
                             < p className={`mt-4 ${styles.titleSkill}`}>Skill</p>
                             <div className="d-flex flex-row">
                                 <ul className='p-0'>
@@ -173,7 +175,7 @@ const Detail = (props) => {
 
                             <div className="d-flex flex-row">
                                 <div className="row">
-                                    {data == "" ? (
+                                    {/* {data == "" ? (
                                         <p> Protofolio Masih Kosong </p>
                                     ) : (
                                         data.map((item, index) => (
@@ -189,7 +191,7 @@ const Detail = (props) => {
                                             </div>
                                         ))
                                     )
-                                    }
+                                    } */}
                                     <div className="col-md-12">
                                         <div className="collapse" id="collapseExample2">
                                             <div className={`card ${styles.cardCostum}`}>
@@ -197,7 +199,7 @@ const Detail = (props) => {
                                                     {/* <div className="col-md-3">
                                                         <Image src='/tokped.jpg' width={150} height={150} alt="..." className={styles.gambarPK} />
                                                     </div> */}
-                                                    {experience == "" ? (
+                                                    {/* {experience == "" ? (
                                                         <p> Experience Masih Kosong </p>
                                                     ) : (
                                                         experience.map((item, index) => (
@@ -214,7 +216,7 @@ const Detail = (props) => {
                                                             </div>
                                                         ))
                                                     )
-                                                    }
+                                                    } */}
                                                 </div>
                                             </div>
                                             
