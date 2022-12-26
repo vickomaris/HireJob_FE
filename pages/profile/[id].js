@@ -92,13 +92,13 @@ const Detail = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className={`col-md-4 p-5 ${styles.leftside}`}>
-                            {/* {
+                            {
                                 props.data.map((item, index) => (
                                     <div key={index} className="d-flex flex-row justify-content-center">
-                                        <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image_url}`} width={150} height={150} style={{ borderRadius: "100%" }} alt='luis' />
+                                        <Image src={item.image_url} width={150} height={150} style={{ borderRadius: "100%" }} alt='luis' />
                                     </div>
                                 ))
-                            } */}
+                            }
                             {/* {
                                 props.data.map((item, index) => (
                                     <div key={index}> {item.id_user !== iniLocal.id_user ? ('') : (<div className="d-flex flex-row">
@@ -107,7 +107,7 @@ const Detail = (props) => {
                                         </Link></div>)} </div>
                                 )
                                 )} */}
-                            {/* {
+                            {
                                 props.data.map((item, index) => (
                                     <div key={index} className="d-flex flex-row mt-3 justify-content-center">
                                         <Link href={`/editprofile/${item.id_user}`}>
@@ -149,7 +149,7 @@ const Detail = (props) => {
 
                                     </div>
                                 ))
-                            } */}
+                            }
                             < p className={`mt-4 ${styles.titleSkill}`}>Skill</p>
                             <div className="d-flex flex-row">
                                 <ul className='p-0'>
@@ -175,14 +175,14 @@ const Detail = (props) => {
 
                             <div className="d-flex flex-row">
                                 <div className="row">
-                                    {/* {data == "" ? (
+                                    {data == "" ? (
                                         <p> Protofolio Masih Kosong </p>
                                     ) : (
                                         data.map((item, index) => (
                                             <div key={index} className="col-md-4 mt-4">
                                                 <div className="collapse" id="collapseExample">
                                                     <div className={styles.portofolioCard}>
-                                                        <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.imageporto_url}`} width={150} height={150} alt="" className={styles.gambar} />
+                                                        <Image src={item.imageporto_url} width={150} height={150} alt="" className={styles.gambar} />
                                                         <p className={`text-center mt-3 ${styles.titlePortofolio}`}>
                                                             {item.name}
                                                         </p>
@@ -191,7 +191,7 @@ const Detail = (props) => {
                                             </div>
                                         ))
                                     )
-                                    } */}
+                                    }
                                     <div className="col-md-12">
                                         <div className="collapse" id="collapseExample2">
                                             <div className={`card ${styles.cardCostum}`}>
