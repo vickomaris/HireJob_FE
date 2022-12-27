@@ -19,7 +19,7 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container">
-                    <Link className="navbar-brand" href="#"><Image src='/logoungu.png' height={50} width={100} /></Link>
+                    <Link className="navbar-brand" href='/homeperekrut'><Image src='/logoungu.png' height={50} width={100} /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -167,7 +167,7 @@ const Index = () => {
               data2.length === 0 ? data.map ((item, index) => (
                 <div key={index} className={`col-md-12 mb-1 ${styles.content}`}>
                   <div  className="d-flex flex-row p-3">
-                    <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} height={100} width={100} className="col-md-1" style={{borderRadius:"100%"}} alt='ava' />
+                    <Image src={item.image_url ? item.image_url : `${process.env.NEXT_PUBLIC_API_URL}/${item.image}` } height={100} width={100} className="col-md-1" style={{borderRadius:"100%"}} alt='ava' />
                     <div className="col-md-5 d-flex flex-column ms-5">
                       <p className={styles.textName}>{item.username}</p>
                       <p className={styles.textProfession}>{item.jobdesk}</p>
@@ -210,11 +210,17 @@ const Index = () => {
                           <p className={`ms-2 ${styles.textLocation}`}>Lorem ipsum</p>
                         </div>
                         <div className="d-flex flex-row">
-                          <ul className='p-0'>
-                            <li className={`${styles.textSkill} px-4 py-2 me-3`}>PHP</li>
-                            <li className={`${styles.textSkill} px-4 py-2 me-3`}>JavaScript</li>
-                            <li className={`${styles.textSkill} px-4 py-2 me-3`}>HTML</li>
-                          </ul>
+                        {item.skill != null ? (
+														item.skill.split(",").map((item, index) => (
+															<p
+																key={index}
+																className={`m-1 p-1 ${styles.textSkill}`}>
+																{item}
+															</p>
+														))
+													) : (
+														<p className="text-secondary">No skill</p>
+													)}
                         </div>
                       </div>
                       <div className="col-md-5 d-flex flex-row align-items-center justify-content-end">

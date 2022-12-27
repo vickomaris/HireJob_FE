@@ -15,9 +15,24 @@ const Index = () => {
   const [sort, setSort] = useState('username')
   const [asc, setAsc] = useState('asc')
   const [page, setPage] = useState(1)
+  const [data2, setData2] = useState([])
+  const [username, setName] = useState("");
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    if (username != "") {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_API_URL}/user/search/${username}`)
+        .then((res) => {
+          setData2(res.data.data.rows);
+          // router.push(`/home/home?username=${username}`);
+        });
+    }
+  };
 
   useEffect(() => {
     getDatauser(sort, asc, 5, page)
+    
   }, [sort, asc, page])
 
   const getDatauser = (sort, asc, limit, page) => {
@@ -86,8 +101,9 @@ const Index = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 py-5 g-0">
+            <form action="" onSubmit={(e) => onSubmitHandler(e)}>
               <div className={`input-group flex-nowrap ${styles.cari}`}>
-                <input type="text" className="form-control" id={styles.cari2} placeholder="Search for any skill" aria-describedby="addon-wrapping" />
+                <input type="text" className="form-control" id={styles.cari2} placeholder="Search for any skill" aria-describedby="addon-wrapping" onChange={(e) => setName(e.target.value)} />
                 <span className={`input-group-text ${styles.spanCostum}`} id="addon-wrapping">
                   {/* <i className="fa fa-search"> </i> */}
                   <Image src='/search.png' width={20} height={20} alt="search" />
@@ -98,11 +114,11 @@ const Index = () => {
                       Sort
                     </button>
                     <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" href="#" onClick={()=> handleSortasc()}>Sortir berdasarkan{asc}</Link></li>
+                      <li><Link className="dropdown-item" href="#" onClick={()=> handleSortasc()}>Sortir berdasarkan {asc}</Link></li>
                       <li><Link className="dropdown-item" href="#" onClick={()=> handleSorting()}>Sortir berdasarkan {sort}</Link></li>
-                      <li><Link className="dropdown-item" href="#">Sortir berdasarkan Lokasi</Link></li>
+                      {/* <li><Link className="dropdown-item" href="#">Sortir berdasarkan Lokasi</Link></li>
                       <li><Link className="dropdown-item" href="#">Sortir berdasarkan freelance</Link></li>
-                      <li><Link className="dropdown-item" href="#">Sortir berdasarkan fulltime</Link></li>
+                      <li><Link className="dropdown-item" href="#">Sortir berdasarkan fulltime</Link></li> */}
                     </ul>
                   </div>
                 </span>
@@ -110,30 +126,68 @@ const Index = () => {
                   <button className={styles.spanCostumbutton}> Search </button>
                 </span>
               </div>
+              </form>
             </div>
           </div>
           <div className="row">
             {
-              data.length === 0 ? (
-                <div> Data sudah habis </div>
+              data2.length === 0 ? data.map ((item, index) => (
+                <div key={index} className={`col-md-12 mb-1 ${styles.content}`}>
+                  <div  className="d-flex flex-row p-3">
+                    <Image src={item.image_url ? item.image_url : `${process.env.NEXT_PUBLIC_API_URL}/${item.image}` } height={100} width={100} className="col-md-1" style={{borderRadius:"100%"}} alt='ava' />
+                    <div className="col-md-5 d-flex flex-column ms-5">
+                      <p className={styles.textName}>{item.username}</p>
+                      <p className={styles.textProfession}>{item.jobdesk}</p>
+                      <div className="d-flex flex-row">
+                        <Image src='/mappin.svg' height={25} width={10} alt='map' />
+                        <p className={`ms-2 ${styles.textLocation}`}>{item.city}</p>
+                      </div>
+                      <div className="d-flex flex-row">
+                      {item.skill != null ? (
+														item.skill.split(",").map((item, index) => (
+															<p
+																key={index}
+																className={`m-1 p-1 ${styles.textSkill}`}>
+																{item}
+															</p>
+														))
+													) : (
+														<p className="text-secondary">No skill</p>
+													)}
+                      </div>
+                    </div>
+                    <div className="col-md-5 d-flex flex-row align-items-center justify-content-end">
+                      <Link href={`/profile/${item.id_user}`}> 
+                        <button className={`px-4 ${styles.toProfile}`}> Lihat Profile</button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )
               ) :
-                data.map((item, index) => (
+                data2.map((item, index) => (
                   <div key={index} className={`col-md-12 mb-1 ${styles.content}`}>
                     <div  className="d-flex flex-row p-3">
-                      <Image src='/luis.png' height={100} width={100} className="col-md-1" alt="avatar" />
+                      <Image src='/luis.png' height={100} width={100} className="col-md-1" alt='luis' />
                       <div className="col-md-5 d-flex flex-column ms-5">
                         <p className={styles.textName}>{item.username}</p>
                         <p className={styles.textProfession}>{item.jobdesk}</p>
                         <div className="d-flex flex-row">
-                          <Image src='/mappin.svg' height={25} width={10}  alt="pin"/>
+                          <Image src='/mappin.svg' height={25} width={10} alt='map' />
                           <p className={`ms-2 ${styles.textLocation}`}>Lorem ipsum</p>
                         </div>
                         <div className="d-flex flex-row">
-                          <ul className='p-0'>
-                            <li className={`${styles.textSkill} px-4 py-2 me-3`}>PHP</li>
-                            <li className={`${styles.textSkill} px-4 py-2 me-3`}>JavaScript</li>
-                            <li className={`${styles.textSkill} px-4 py-2 me-3`}>HTML</li>
-                          </ul>
+                        {item.skill != null ? (
+														item.skill.split(",").map((item, index) => (
+															<p
+																key={index}
+																className={`m-1 p-1 ${styles.textSkill}`}>
+																{item}
+															</p>
+														))
+													) : (
+														<p className="text-secondary">No skill</p>
+													)}
                         </div>
                       </div>
                       <div className="col-md-5 d-flex flex-row align-items-center justify-content-end">

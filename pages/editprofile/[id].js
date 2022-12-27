@@ -239,7 +239,7 @@ const UpdateProfile = () => {
                                 {
                                     data.map((item, index) => (
                                         <div key={index} className="d-flex flex-row justify-content-center">
-                                            <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{ borderRadius: "100%" }} alt='ava' />
+                                            <Image src={item.image_url ? item.image_url : `${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{ borderRadius: "100%" }} alt='ava' />
                                         </div>
                                     ))
                                 }
@@ -278,7 +278,7 @@ const UpdateProfile = () => {
                                 <div className="text-center" type="button" htmlFor="image" onClick={handleClick}  >
                                     <br />Edit Photo</div>
                             </div>
-                            <button type="submit" className='btn d-grid gap-2 col-3 mx-auto' onClick={updateForm} > Post </button>
+                            <button type="submit" className={`btn d-grid gap-2 col-3 mx-auto ${styles.btnPost}`} onClick={updateForm} > Post </button>
                             {
                                 data.map((item, index) => (
                                     <div key={index} className="leftsideBottom">

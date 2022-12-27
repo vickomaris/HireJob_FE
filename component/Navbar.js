@@ -16,7 +16,7 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container">
-                    <Link className="navbar-brand" href="#"><Image src='/logoungu.png' height={50} width={100} /></Link>
+                    <Link className="navbar-brand" href='/home'><Image src='/logoungu.png' height={50} width={100} /></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -34,7 +34,7 @@ const Navbar = () => {
                                 {/* <Link className="nav-link" href={`/profile/${data}`}><Image src='/iconprofNav.svg' height={10} width={100} className={` ${styles.picNav}`} /> </Link> */}
 
                                 <Link className="nav-link" href={`/profile/${data.id_user}`}>
-                                    <Image src={`${process.env.NEXT_PUBLIC_API_URL}/${data.image}`} height={50} width={50} className={`${styles.picNav}`} alt="ava" /> </Link>
+                                    <Image src={ data.image_url ? data.image_url : `${process.env.NEXT_PUBLIC_API_URL}/${data.image}`} height={50} width={50} className={`${styles.picNav}`} alt="ava" /> </Link>
                             </li>
                         </ul>
                     </div>

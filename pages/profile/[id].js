@@ -72,11 +72,17 @@ const Detail = (props) => {
                 // router.push('/login')
             })
     }
+
+    const logout = () => {
+        localStorage.clear();
+        alert("Berhasil Logout")
+        router.push("/");
+    };
     return (
 
         <div>
-            {JSON.stringify(data)}
-            {JSON.stringify(experience)}
+            {/* {JSON.stringify(data)}
+            {JSON.stringify(experience)} */}
 
             <section className="top">
                 <div className="container-fluid">
@@ -86,7 +92,7 @@ const Detail = (props) => {
                     </div>
                 </div>
             </section>
-            {JSON.stringify(props)}
+            {/* {JSON.stringify(props)} */}
 
             <section className={styles.main}>
                 <div className="container">
@@ -95,7 +101,7 @@ const Detail = (props) => {
                             {
                                 props.data.map((item, index) => (
                                     <div key={index} className="d-flex flex-row justify-content-center">
-                                        <Image src={item.image_url ? item.image_url : `${process.env.NEXT_PUBLIC_API_URL}/${item.image}` } width={150} height={150} style={{ borderRadius: "100%" }} alt='luis' />
+                                        <Image src={item.image_url ? item.image_url : `${process.env.NEXT_PUBLIC_API_URL}/${item.image}`} width={150} height={150} style={{ borderRadius: "100%" }} alt='ava' />
                                     </div>
                                 ))
                             }
@@ -111,7 +117,6 @@ const Detail = (props) => {
                                 props.data.map((item, index) => (
                                     <div key={index} className="d-flex flex-row mt-3 justify-content-center">
                                         <Link href={`/editprofile/${item.id_user}`}>
-                                            
                                             <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} alt="pencil" /> Edit </button>
                                         </Link>
                                     </div>
@@ -139,32 +144,36 @@ const Detail = (props) => {
                                     <div key={index} className="d-flex flex-column">
                                         <p className={styles.textStatus}>{item.statusjob}</p>
                                         <p className={styles.textDescription}>{item.description}</p>
-                                        <Link href='/hire'>
+                                        <Link href={`/hire/${item.id_user}`}>
                                             <button className={`mt-4 ${styles.btnHire}`}> Hire</button>
                                         </Link>
 
-                                        <Link href='/home'>
+                                        {/* <Link href='/home'>
                                             <button className={`mt-4 ${styles.btnHome}`}> Back Home</button>
-                                        </Link>
+                                        </Link> */}
 
                                     </div>
                                 ))
                             }
                             < p className={`mt-4 ${styles.titleSkill}`}>Skill</p>
-                            <div className="d-flex flex-row">
-                                <ul className='p-0'>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2`}>Pyhton</li>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2 `}>Laravel</li>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2 `}>Golang</li>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2`}>C++</li>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2 `}>JavaScript</li>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2 `}>HTML</li>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2`}>PHP</li>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2 `}>Kotlin</li>
-                                    <li className={`${styles.textSkill} px-3 py-2 mt-2 me-2 `}>Swift</li>
-                                </ul>
-                            </div>
-
+                            {
+                                props.data.map((item, index) => (
+                                    <div key={index} className="d-flex flex-row">
+                                        {item.skill != null ? (
+                                            item.skill.split(",").map((item, index) => (
+                                                <p
+                                                    key={index}
+                                                    className={`m-1 p-1 ${styles.textSkill}`}>
+                                                    {item}
+                                                </p>
+                                            ))
+                                        ) : (
+                                            <p className="text-secondary">No skill</p>
+                                        )}
+                                    </div>
+                                ))
+                            }
+                            <button className={`mt-4 ${styles.btnLogout}`} onClick={logout}>Logout</button>
                         </div>
                         <div className={`col-md-7 p-5 ms-4 ${styles.rightside}`}>
                             <div className="d-flex flex-row">
@@ -218,7 +227,7 @@ const Detail = (props) => {
                                                     }
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>

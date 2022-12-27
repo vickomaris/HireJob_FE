@@ -109,6 +109,12 @@ const Index = () => {
       })
   // }
    }, [])
+
+   const logout = () => {
+    localStorage.clear();
+    alert("Berhasil Logout")
+    router.push("/");
+};
   return (
     <>
       {/* {JSON.stringify(data)} */}
@@ -180,7 +186,6 @@ const Index = () => {
                     <div key={index} className="d-flex flex-row mt-3 col-md-2">
                       <Image src='/iconPhone.png' height={30} width={30} alt="icPhone" />
                       <span className={`ms-4 ${styles.textContact}`}>{item.phone == null ? (<span>.....</span>) : (<span>{item.phone}</span>)}</span>
-                      
                     </div>
                   ))
                 }
@@ -192,7 +197,9 @@ const Index = () => {
                     </div>
                   ))
                 }
+                <button className={`mt-4 ${styles.btnLogout}`} onClick={logout}>Logout</button>
               </div>
+              
             </div>
           </div>
         </div>

@@ -57,6 +57,18 @@
     font-size: 14px;
 }
 
+.btnPost{
+    color: white;
+    background-color: #5E50A1;
+    font-weight: bold;
+    font-size: 16px;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
 .btnSimpan{
     color: white;
     background-color: #5E50A1;
