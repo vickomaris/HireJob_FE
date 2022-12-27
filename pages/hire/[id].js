@@ -29,7 +29,7 @@ const Index = () => {
                 <title> Halaman Hire</title>
                 <link rel='icon' href='/logoheaderputih.svg' />
             </Head>
-            {JSON.stringify(data)}
+            {/* {JSON.stringify(data)} */}
             <section className={styles.main}>
                 <div className="container">
                     <div className="row">
