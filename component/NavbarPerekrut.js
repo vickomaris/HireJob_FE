@@ -34,7 +34,7 @@ const Navbar = () => {
                                 <Link className="nav-link" href="#"><Image src='/iconmainNav.svg' height={10} width={50} className={`mx-3 ${styles.picNav}`} /></Link>
                             </li>
                             <li className="nav-item ms-4">
-                                <Link className="nav-link" href={`/profileperekrut/${data.id_perekrut}`}><Image src='/iconprofNav.svg' height={10} width={100} className={` ${styles.picNav}`} /> </Link>
+                                <Link className="nav-link" href={`/profileperekrut/${data}`}><Image src='/iconprofNav.svg' height={10} width={100} className={` ${styles.picNav}`} /> </Link>
                             </li>
                         </ul>
                     </div>

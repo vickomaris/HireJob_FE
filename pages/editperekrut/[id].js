@@ -105,7 +105,7 @@ const UpdatePerekrut = () => {
                         <div className={`col-md-4  ${styles.leftside}`}>
                             <div className={`p-5  ${styles.cardProfile}`}>
                                 <div className="d-flex flex-row justify-content-center">
-                                    <Image src='/luis.png' width={150} height={150} alt='luis' />
+                                    <Image src='/iconprofNav.svg' width={150} height={150} alt='ava' style={{borderRadius:'100%'}} />
                                 </div>
                                 {/* <div className="d-flex flex-row mt-3 justify-content-center">
                                     <button className={styles.btnEdit}> <Image src='/pencil.png' width={15} height={15} /> Edit </button>
@@ -252,5 +252,5 @@ const UpdatePerekrut = () => {
     )
 }
 
-UpdatePerekrut.layout = 'L1'
+UpdatePerekrut.layout = 'L2'
 export default UpdatePerekrut

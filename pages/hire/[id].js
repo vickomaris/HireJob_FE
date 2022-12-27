@@ -114,6 +114,6 @@ const Index = () => {
     )
 }
 
-Index.layout = 'L1'
+Index.layout = 'L2'
 
 export default Index

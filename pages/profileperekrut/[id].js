@@ -136,7 +136,7 @@ const Index = () => {
           <div className="row">
             <div className={styles.mainProfile}>
               <div className="d-flex flex-row justify-content-center">
-                <Image src='/ptkun.jpg' width={150} height={150} alt="imgAva" style={{borderRadius:'100%'}} />
+                <Image src='/iconprofNav.svg' width={150} height={150} alt="imgAva" style={{borderRadius:'100%'}} />
               </div>
               { 
                   data.map((item, index) => (
